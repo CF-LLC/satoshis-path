@@ -1,0 +1,239 @@
+{
+  "referralLinks": {
+    "fold": "https://use.foldapp.com/r/COOPER123",
+    "strike": "https://strike.me/cooper",
+    "swan": "https://swanbitcoin.com/coopstack",
+    "fountain": "https://fountain.fm/invite/cooper",
+    "bitrefill": "https://bitrefill.com/?ref=cooper",
+    "river": "https://river.com/signup?r=cooper",
+    "coinbase": "https://coinbase.com/join/cooper_stack",
+    "kraken": "https://r.kraken.com/cooper",
+    "ledger": "https://shop.ledger.com/?r=cooper",
+    "trezor": "https://trezor.io/r/cooper",
+    "cointracker": "https://www.cointracker.io/r/cooper",
+    "koinly": "https://koinly.io/r/cooper",
+    "lolli": "https://lolli.com/r/cooper",
+    "compass": "https://compassmining.io/r/cooper"
+  },
+  "stackingMethods": [
+    {
+      "id": "dca",
+      "title": "Dollar Cost Averaging (DCA)",
+      "description": "Buy a fixed amount of Bitcoin at regular intervals, regardless of price",
+      "category": "beginner",
+      "difficulty": "Easy",
+      "timeCommitment": "5 minutes/week",
+      "featured": true,
+      "pros": [
+        "Reduces impact of volatility",
+        "Simple to execute",
+        "Builds discipline",
+        "No need to time the market"
+      ],
+      "cons": [
+        "May miss major dips",
+        "Requires consistent cash flow",
+        "Exchange fees can add up"
+      ],
+      "platforms": [
+        {
+          "name": "Swan Bitcoin",
+          "referralKey": "swan",
+          "description": "Bitcoin-only DCA platform with low fees"
+        },
+        {
+          "name": "River Financial",
+          "referralKey": "river",
+          "description": "Clean interface, institutional grade security"
+        },
+        {
+          "name": "Strike",
+          "referralKey": "strike",
+          "description": "Lightning-fast Bitcoin purchases"
+        }
+      ]
+    },
+    {
+      "id": "lump-sum",
+      "title": "Lump Sum Investing",
+      "description": "Invest a large amount of money all at once when you have conviction",
+      "category": "intermediate",
+      "difficulty": "Medium",
+      "timeCommitment": "Research intensive",
+      "featured": true,
+      "pros": [
+        "Can maximize gains in bull markets",
+        "Less transaction fees",
+        "Full exposure immediately"
+      ],
+      "cons": [
+        "High risk if bought at peak",
+        "Requires market timing",
+        "Psychological pressure"
+      ],
+      "platforms": [
+        {
+          "name": "Coinbase Pro",
+          "referralKey": "coinbase",
+          "description": "Lower fees than regular Coinbase"
+        },
+        {
+          "name": "Kraken",
+          "referralKey": "kraken",
+          "description": "Advanced trading features"
+        }
+      ]
+    },
+    {
+      "id": "mining",
+      "title": "Bitcoin Mining",
+      "description": "Earn Bitcoin by contributing computing power to secure the network",
+      "category": "advanced",
+      "difficulty": "Hard",
+      "timeCommitment": "Ongoing maintenance",
+      "featured": false,
+      "pros": [
+        "Earn Bitcoin directly",
+        "Support the network",
+        "Potential for high returns"
+      ],
+      "cons": [
+        "High upfront costs",
+        "Technical complexity",
+        "Energy consumption",
+        "Market volatility affects profitability"
+      ],
+      "platforms": [
+        {
+          "name": "Compass Mining",
+          "referralKey": "compass",
+          "description": "Hosted mining solutions"
+        }
+      ]
+    },
+    {
+      "id": "earn-bitcoin",
+      "title": "Earn Bitcoin",
+      "description": "Get paid in Bitcoin for goods, services, or using Bitcoin-reward apps",
+      "category": "beginner",
+      "difficulty": "Easy",
+      "timeCommitment": "Varies",
+      "featured": true,
+      "pros": [
+        "No upfront investment",
+        "Learn while earning",
+        "Stackable with other methods"
+      ],
+      "cons": [
+        "Usually small amounts",
+        "Time intensive",
+        "Limited opportunities"
+      ],
+      "platforms": [
+        {
+          "name": "Fold App",
+          "referralKey": "fold",
+          "description": "Earn Bitcoin rewards on purchases"
+        },
+        {
+          "name": "Lolli",
+          "referralKey": "lolli",
+          "description": "Bitcoin back when shopping online"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "dca-calculator",
+      "title": "DCA Calculator",
+      "description": "Calculate how much Bitcoin you would have accumulated using dollar-cost averaging",
+      "category": "calculator",
+      "url": "/tools/dca-calculator",
+      "featured": true
+    },
+    {
+      "id": "wallets",
+      "title": "Bitcoin Wallets",
+      "description": "Recommended hardware and software wallets for storing Bitcoin",
+      "category": "security",
+      "featured": true,
+      "items": [
+        {
+          "name": "Ledger Nano S Plus",
+          "type": "hardware",
+          "referralKey": "ledger",
+          "description": "Popular hardware wallet with strong security"
+        },
+        {
+          "name": "Trezor Model T",
+          "type": "hardware", 
+          "referralKey": "trezor",
+          "description": "Open-source hardware wallet"
+        },
+        {
+          "name": "Blue Wallet",
+          "type": "mobile",
+          "referralUrl": "https://bluewallet.io/",
+          "description": "Feature-rich mobile wallet"
+        },
+        {
+          "name": "Electrum",
+          "type": "desktop",
+          "referralUrl": "https://electrum.org/",
+          "description": "Lightweight desktop wallet"
+        }
+      ]
+    },
+    {
+      "id": "price-tracker",
+      "title": "Bitcoin Price Tracker",
+      "description": "Real-time Bitcoin price and market data",
+      "category": "market-data",
+      "url": "/tools/price-tracker",
+      "featured": false
+    },
+    {
+      "id": "tax-tools",
+      "title": "Tax Tools",
+      "description": "Tools to help calculate Bitcoin taxes and capital gains",
+      "category": "tax",
+      "featured": false,
+      "items": [
+        {
+          "name": "CoinTracker",
+          "referralKey": "cointracker",
+          "description": "Comprehensive crypto tax software"
+        },
+        {
+          "name": "Koinly",
+          "referralKey": "koinly",
+          "description": "Easy-to-use tax calculator"
+        }
+      ]
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "Swan Bitcoin",
+      "referralKey": "swan",
+      "description": "Bitcoin-only exchange with automatic DCA",
+      "pros": ["Bitcoin-only", "Low fees", "Auto DCA"],
+      "cons": ["US only", "Limited features"]
+    },
+    {
+      "name": "Strike",
+      "referralKey": "strike",
+      "description": "Lightning-fast Bitcoin purchases with low fees",
+      "pros": ["Lightning Network", "Low fees", "Fast"],
+      "cons": ["Limited countries", "New platform"]
+    },
+    {
+      "name": "River Financial",
+      "referralKey": "river",
+      "description": "Bitcoin-only financial services",
+      "pros": ["Bitcoin-only", "Good security", "Clean UI"],
+      "cons": ["US only", "Higher minimums"]
+    }
+  ]
+}

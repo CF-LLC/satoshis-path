@@ -33,10 +33,10 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="/paths"
+              href="/personal-strategy"
               className="text-gray-700 hover:text-bitcoin-orange font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-bitcoin-orange after:transition-all after:duration-300 hover:after:w-full"
             >
-              Stacking Paths
+              My Strategy
             </Link>
             <Link
               href="/tools"
@@ -51,10 +51,10 @@ export default function Navbar() {
               About
             </Link>
             <Link
-              href="/paths"
+              href="/personal-strategy"
               className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105"
             >
-              Start Stacking
+              My Strategy
             </Link>
           </div>
 
@@ -95,11 +95,11 @@ export default function Navbar() {
                 Home
               </Link>
               <Link
-                href="/paths"
+                href="/personal-strategy"
                 className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Stacking Paths
+                My Strategy
               </Link>
               <Link
                 href="/tools"
@@ -116,11 +116,11 @@ export default function Navbar() {
                 About
               </Link>
               <Link
-                href="/paths"
+                href="/personal-strategy"
                 className="block bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Start Stacking
+                My Strategy
               </Link>
             </div>
           </div>

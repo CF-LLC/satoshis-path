@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     description: "Learn the best methods, tools, and strategies to accumulate Bitcoin over time.",
     type: "website",
   },
+  icons: {
+    icon: '/bitcoin-icon.svg',
+    shortcut: '/bitcoin-icon.svg',
+    apple: '/bitcoin-icon.svg',
+  },
 };
 
 export default function RootLayout({

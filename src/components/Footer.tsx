@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 export default function Footer() {
@@ -39,6 +41,53 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
+            
+            {/* Bitcoin Tip Section */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-bitcoin-orange/10 to-orange-500/10 rounded-xl border border-bitcoin-orange/20">
+              <h4 className="text-bitcoin-orange font-semibold mb-3 flex items-center">
+                <span className="mr-2">⚡</span>
+                Like the content? Tip in sats!
+              </h4>
+              <div className="space-y-3">
+                {/* Lightning Address */}
+                <div>
+                  <p className="text-xs text-gray-400 mb-1">Lightning Address:</p>
+                  <div className="flex items-center bg-gray-800 rounded-lg px-3 py-2">
+                    <code className="text-xs text-bitcoin-orange flex-1 font-mono">
+                      spock@speed.app
+                    </code>
+                    <button
+                      onClick={() => navigator.clipboard.writeText('spock@speed.app')}
+                      className="ml-2 text-gray-400 hover:text-bitcoin-orange transition-colors text-xs"
+                      title="Copy Lightning Address"
+                    >
+                      📋
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Bitcoin Address */}
+                <div>
+                  <p className="text-xs text-gray-400 mb-1">Bitcoin Address:</p>
+                  <div className="flex items-center bg-gray-800 rounded-lg px-3 py-2">
+                    <code className="text-xs text-bitcoin-orange flex-1 font-mono break-all">
+                      bc1q4wnvs69sgyk6sta825ycuz7phm05mq4ax306z9
+                    </code>
+                    <button
+                      onClick={() => navigator.clipboard.writeText('bc1q4wnvs69sgyk6sta825ycuz7phm05mq4ax306z9')}
+                      className="ml-2 text-gray-400 hover:text-bitcoin-orange transition-colors text-xs"
+                      title="Copy Bitcoin Address"
+                    >
+                      📋
+                    </button>
+                  </div>
+                </div>
+                
+                <p className="text-xs text-gray-500 italic">
+                  Every sat helps maintain and improve this resource! 🧡
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -51,13 +100,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/paths" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
-                  Stacking Paths
+                <Link href="/tools" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
+                  Bitcoin Tools & Strategies
                 </Link>
               </li>
               <li>
-                <Link href="/tools" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
-                  Bitcoin Tools
+                <Link href="/earn" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
+                  Earn Bitcoin
                 </Link>
               </li>
               <li>
@@ -67,7 +116,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/paths/personal-strategy" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
-                  Personal Strategy
+                  My Personal Strategy
                 </Link>
               </li>
             </ul>
@@ -78,44 +127,44 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-bitcoin-orange">Bitcoin Hub</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/rabbit-hole"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🕳️ Down the Rabbit Hole
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/wallet-analyzer"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🔍 Analyze Wallet Activity
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/buy-bitcoin"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   💰 Buy Bitcoin
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/decentralized-wallet"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🏦 Decentralized Wallet
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/videos"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   📺 Popular Videos
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -125,16 +174,18 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-bitcoin-orange">Community</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/news"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   📰 Auto News
-                </a>
+                </Link>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://bitcoin.org/en/notable-users"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🏆 Famous Endorsements
@@ -142,27 +193,29 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://store.bitcoin.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🛍️ Bitcoin Merch
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/contact"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🐛 Report Problem
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/contact"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   💡 Request Feature
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

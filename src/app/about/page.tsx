@@ -165,10 +165,10 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/paths"
+              href="/personal-strategy"
               className="bg-bitcoin-orange text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors"
             >
-              Explore Stacking Methods
+              View My Strategy
             </Link>
             <Link
               href="/tools"

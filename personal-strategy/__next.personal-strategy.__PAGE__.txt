@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[96383,["/satoshis-path/_next/static/chunks/dc005228eb01553b.js","/satoshis-path/_next/static/chunks/1b0a2a1f4da42807.js"],"default"]
+2:I[96383,["/satoshis-path/_next/static/chunks/dc005228eb01553b.js","/satoshis-path/_next/static/chunks/d96e4624f14c93f7.js"],"default"]
 3:I[97367,["/satoshis-path/_next/static/chunks/ff1a16fafef87110.js","/satoshis-path/_next/static/chunks/247eb132b7f7b574.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"buildId":"NK25BKJsHcx6Eg5W34yYB","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50","children":["$","$L2",null,{}]}],[["$","script","script-0",{"src":"/satoshis-path/_next/static/chunks/1b0a2a1f4da42807.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"9a5od5UTLQabNuiBC7Jwq","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50","children":["$","$L2",null,{}]}],[["$","script","script-0",{"src":"/satoshis-path/_next/static/chunks/d96e4624f14c93f7.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
 5:null

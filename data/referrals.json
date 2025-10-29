@@ -1,7 +1,12 @@
 {
   "exchanges": {
     "coinbase": "https://coinbase.onelink.me/2ysS/npinudo9?src=ios-link",
-    "kraken": "https://r.kraken.com/cooper",
+    "kraken": {
+      "url": "https://invite.kraken.com/JDNW/azca3epm",
+      "code": "d47fb7qd",
+      "bonus": "$150",
+      "description": "Advanced trading features with bonus"
+    },
     "strike": "https://invite.strike.me/cooper",
     "swan": "https://www.swanbitcoin.com/cooper",
     "river": "https://river.com/signup?r=cooper"
@@ -35,7 +40,7 @@
       "description": "Bitcoin mining app"
     },
     "fold": {
-      "url": "https://use.foldapp.com/r/COOPER123",
+      "url": "https://use.foldapp.com/r/3A9HNPAU",
       "description": "Earn Bitcoin rewards on purchases"
     },
     "lolli": {

@@ -1,39 +1,88 @@
 import referralsData from '../../data/referrals.json';
 
 /**
- * Get a referral URL by key from the centralized referral links
+ * Get a referral URL by category and key from the centralized referral links
  */
-export function getReferralUrl(key: string): string {
-  return referralsData.referralLinks[key as keyof typeof referralsData.referralLinks] || '#';
+export function getReferralUrl(category: string, key: string): string {
+  const categoryData = referralsData[category as keyof typeof referralsData];
+  if (!categoryData || typeof categoryData !== 'object') return '#';
+  
+  const item = categoryData[key as keyof typeof categoryData];
+  if (!item) return '#';
+  
+  // Handle different data structures
+  if (typeof item === 'string') return item;
+  if (typeof item === 'object' && item !== null && 'url' in item) {
+    return (item as { url: string }).url;
+  }
+  
+  return '#';
 }
 
 /**
- * Get all referral links
+ * Get exchange referral URL
+ */
+export function getExchangeUrl(key: string): string {
+  return getReferralUrl('exchanges', key);
+}
+
+/**
+ * Get earning app referral URL
+ */
+export function getEarningAppUrl(key: string): string {
+  return getReferralUrl('earning_apps', key);
+}
+
+/**
+ * Get hardware wallet referral URL
+ */
+export function getHardwareWalletUrl(key: string): string {
+  return getReferralUrl('hardware_wallets', key);
+}
+
+/**
+ * Get all referral links (for backwards compatibility)
  */
 export function getAllReferralLinks() {
-  return referralsData.referralLinks;
+  const allLinks: Record<string, string> = {};
+  
+  // Flatten all categories into a single object
+  Object.entries(referralsData).forEach(([category, items]) => {
+    if (typeof items === 'object' && items !== null && !Array.isArray(items)) {
+      Object.entries(items).forEach(([key, value]) => {
+        if (typeof value === 'string') {
+          allLinks[key] = value;
+        } else if (typeof value === 'object' && value !== null && 'url' in value) {
+          allLinks[key] = (value as { url: string }).url;
+        }
+      });
+    }
+  });
+  
+  return allLinks;
 }
 
 /**
- * Map platform names to referral link keys and get the URL
+ * Map platform names to referral URLs using the new structure
  */
 export function getPlatformReferralUrl(platformName: string): string {
-  const nameToKey: Record<string, string> = {
-    'Swan Bitcoin': 'swan',
-    'Strike': 'strike',
-    'River Financial': 'river',
-    'Fold App': 'fold',
-    'Lolli': 'lolli',
-    'Fountain': 'fountain',
-    'Coinbase Pro': 'coinbase',
-    'Kraken': 'kraken',
-    'Ledger Nano S Plus': 'ledger',
-    'Trezor Model T': 'trezor',
-    'CoinTracker': 'cointracker',
-    'Koinly': 'koinly',
-    'Compass Mining': 'compass'
+  const nameToPath: Record<string, [string, string]> = {
+    'Swan Bitcoin': ['exchanges', 'swan'],
+    'Strike': ['exchanges', 'strike'],
+    'River Financial': ['exchanges', 'river'],
+    'Coinbase': ['exchanges', 'coinbase'],
+    'Kraken': ['exchanges', 'kraken'],
+    'Fold App': ['earning_apps', 'fold'],
+    'Lolli': ['earning_apps', 'lolli'],
+    'ZBD Gaming': ['earning_apps', 'zbd'],
+    'Yotta Banking': ['earning_apps', 'yotta'],
+    'Ledger Nano S Plus': ['hardware_wallets', 'ledger'],
+    'Trezor Model T': ['hardware_wallets', 'trezor'],
+    'CoinTracker': ['other', 'cointracker'],
+    'Koinly': ['other', 'koinly'],
+    'Compass Mining': ['mining', 'compass']
   };
 
-  const key = nameToKey[platformName];
-  return key ? getReferralUrl(key) : '#';
+  const path = nameToPath[platformName];
+  return path ? getReferralUrl(path[0], path[1]) : '#';
 }

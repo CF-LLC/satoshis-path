@@ -6,7 +6,7 @@ export default function ContactPage() {
       type: 'problem',
       title: '🐛 Report a Problem',
       description: 'Found a bug or issue with the site? Let me know and I\'ll fix it ASAP.',
-      mailto: 'mailto:satoshispath@gmail.com?subject=Problem Report - Satoshi\'s Path&body=Hi, I found an issue with your site:%0D%0A%0D%0APage URL: %0D%0ADescription of the problem: %0D%0A%0D%0AThank you!',
+      mailto: 'mailto:spock@speed.app?subject=Problem Report - Satoshi\'s Path&body=Hi, I found an issue with your site:%0D%0A%0D%0APage URL: %0D%0ADescription of the problem: %0D%0A%0D%0AThank you!',
       bgColor: 'from-red-100 to-red-50',
       textColor: 'text-red-800',
       buttonColor: 'from-red-500 to-red-600'
@@ -15,7 +15,7 @@ export default function ContactPage() {
       type: 'feature',
       title: '💡 Request a Feature',
       description: 'Have an idea for a new tool or improvement? I\'d love to hear about it!',
-      mailto: 'mailto:satoshispath@gmail.com?subject=Feature Request - Satoshi\'s Path&body=Hi, I have a feature request for your site:%0D%0A%0D%0AFeature idea: %0D%0AWhy it would be helpful: %0D%0A%0D%0AThank you!',
+      mailto: 'mailto:spock@speed.app?subject=Feature Request - Satoshi\'s Path&body=Hi, I have a feature request for your site:%0D%0A%0D%0AFeature idea: %0D%0AWhy it would be helpful: %0D%0A%0D%0AThank you!',
       bgColor: 'from-blue-100 to-blue-50',
       textColor: 'text-blue-800',
       buttonColor: 'from-blue-500 to-blue-600'
@@ -24,7 +24,7 @@ export default function ContactPage() {
       type: 'feedback',
       title: '⭐ General Feedback',
       description: 'Share your thoughts, suggestions, or just say hello!',
-      mailto: 'mailto:satoshispath@gmail.com?subject=Feedback - Satoshi\'s Path&body=Hi,%0D%0A%0D%0AI wanted to share some feedback about your site:%0D%0A%0D%0A%0D%0AThank you!',
+      mailto: 'mailto:spock@speed.app?subject=Feedback - Satoshi\'s Path&body=Hi,%0D%0A%0D%0AI wanted to share some feedback about your site:%0D%0A%0D%0A%0D%0AThank you!',
       bgColor: 'from-green-100 to-green-50',
       textColor: 'text-green-800',
       buttonColor: 'from-green-500 to-green-600'
@@ -33,7 +33,7 @@ export default function ContactPage() {
       type: 'collaboration',
       title: '🤝 Collaboration',
       description: 'Want to collaborate or discuss Bitcoin projects? Let\'s connect!',
-      mailto: 'mailto:satoshispath@gmail.com?subject=Collaboration Inquiry - Satoshi\'s Path&body=Hi,%0D%0A%0D%0AI\'d like to discuss a potential collaboration:%0D%0A%0D%0AProject idea: %0D%0AHow we could work together: %0D%0A%0D%0AThank you!',
+      mailto: 'mailto:spock@speed.app?subject=Collaboration Inquiry - Satoshi\'s Path&body=Hi,%0D%0A%0D%0AI\'d like to discuss a potential collaboration:%0D%0A%0D%0AProject idea: %0D%0AHow we could work together: %0D%0A%0D%0AThank you!',
       bgColor: 'from-purple-100 to-purple-50',
       textColor: 'text-purple-800',
       buttonColor: 'from-purple-500 to-purple-600'
@@ -67,9 +67,9 @@ export default function ContactPage() {
           <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 max-w-2xl mx-auto">
             <h2 className="text-lg font-semibold text-gray-900 mb-2">📧 Direct Email</h2>
             <div className="flex items-center justify-center gap-2 mb-2">
-              <code className="text-bitcoin-orange bg-gray-100 px-3 py-1 rounded">satoshispath@gmail.com</code>
+              <code className="text-bitcoin-orange bg-gray-100 px-3 py-1 rounded">spock@speed.app</code>
               <button
-                onClick={() => copyToClipboard('satoshispath@gmail.com')}
+                onClick={() => copyToClipboard('spock@speed.app')}
                 className="text-gray-400 hover:text-bitcoin-orange transition-colors"
                 title="Copy email address"
               >
@@ -77,7 +77,7 @@ export default function ContactPage() {
               </button>
             </div>
             <p className="text-sm text-gray-600">
-              You can also email me directly at this address for any inquiries!
+              You can also email me directly or use the Lightning address for tips!
             </p>
           </div>
         </div>

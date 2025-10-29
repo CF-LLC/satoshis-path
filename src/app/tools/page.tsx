@@ -1,592 +1,604 @@
-import Link from 'next/link';
+'use client';
 
-export const metadata = {
-  title: "Bitcoin Tools & Utilities | Satoshi's Path",
-  description: "Essential Bitcoin tools and utilities including DCA calculators, block explorers, Lightning wallets, and more to enhance your Bitcoin journey.",
+import Link from 'next/link';
+import { useState } from 'react';
+
+// TypeScript interfaces
+interface BitcoinTool {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  icon: string;
+  category: string;
+  isInternal: boolean;
+  tags?: string[];
+  featured?: boolean;
+  bonus?: string;
+  code?: string;
+  difficulty?: 'Easy' | 'Medium' | 'Advanced';
+}
+
+// Enhanced tool categories with better organization
+const toolCategories = {
+  calculators: {
+    name: "Calculators & Analytics",
+    icon: "📊",
+    color: "blue",
+    description: "Calculate Bitcoin performance, fees, and conversions"
+  },
+  tracking: {
+    name: "Price & Market Data",
+    icon: "📈", 
+    color: "green",
+    description: "Real-time prices, charts, and market analysis"
+  },
+  blockchain: {
+    name: "Blockchain Tools",
+    icon: "🔍",
+    color: "purple", 
+    description: "Explore transactions, blocks, and addresses"
+  },
+  wallets: {
+    name: "Wallet & Security",
+    icon: "🔐",
+    color: "orange",
+    description: "Wallet tools, security, and hardware guides"
+  },
+  education: {
+    name: "Learn & Explore",
+    icon: "📚",
+    color: "indigo",
+    description: "Educational resources and guides"
+  },
+  earning: {
+    name: "Earn & Opportunities",
+    icon: "💰",
+    color: "emerald",
+    description: "Legitimate ways to earn your first Bitcoin"
+  }
 };
 
-// Bitcoin tools and utilities
-const bitcoinTools = [
-  // Our functional tools (internal)
+// Bitcoin tools array
+const bitcoinTools: BitcoinTool[] = [
+  // Calculators & Analytics
   {
     id: "dca-calculator",
     name: "DCA Calculator",
-    description: "Calculate your Bitcoin DCA performance over any time period with real historical data",
+    description: "Calculate Bitcoin dollar-cost averaging performance with real historical data. Compare different investment strategies and timeframes.",
     url: "/tools/dca-calculator",
     icon: "📊",
-    category: "calculator",
-    isInternal: true
+    category: "calculators",
+    isInternal: true,
+    tags: ["DCA", "Historical", "Performance"],
+    featured: true
   },
   {
-    id: "price-tracker",
-    name: "Bitcoin Price Tracker",
-    description: "Real-time Bitcoin price tracking with market data and 24-hour changes",
-    url: "/tools/price-tracker",
-    icon: "📈",
-    category: "dashboard",
-    isInternal: true
+    id: "hodl-calculator", 
+    name: "HODL Calculator",
+    description: "Calculate Bitcoin returns if you had HODLed from any historical date. See what your investment would be worth today.",
+    url: "/tools/hodl-calculator",
+    icon: "💎",
+    category: "calculators", 
+    isInternal: true,
+    tags: ["HODL", "Returns", "Historical"]
   },
   {
     id: "bitcoin-converter",
-    name: "Bitcoin Unit Converter",
-    description: "Convert between BTC, satoshis, mBTC, and fiat currencies with real exchange rates",
+    name: "Bitcoin Unit Converter", 
+    description: "Convert between BTC, satoshis, mBTC, and fiat currencies with real-time exchange rates and precise calculations.",
     url: "/tools/unit-converter",
-    icon: "�",
-    category: "utility",
-    isInternal: true
-  },
-  {
-    id: "hodl-calculator",
-    name: "HODL Calculator",
-    description: "Calculate Bitcoin returns if you had HODLed from any historical date",
-    url: "/tools/hodl-calculator",
-    icon: "💎",
-    category: "calculator",
-    isInternal: true
+    icon: "🔄",
+    category: "calculators",
+    isInternal: true,
+    tags: ["Conversion", "Units", "Fiat"]
   },
   {
     id: "bitcoin-fees",
-    name: "Bitcoin Fee Estimator",
-    description: "Get real-time Bitcoin transaction fee recommendations based on mempool data",
-    url: "/tools/fee-estimator",
-    icon: "�",
-    category: "utility",
-    isInternal: true
+    name: "Fee Estimator",
+    description: "Get real-time Bitcoin transaction fee recommendations based on current mempool data and priority levels.",
+    url: "/tools/fee-estimator", 
+    icon: "⚡",
+    category: "calculators",
+    isInternal: true,
+    tags: ["Fees", "Mempool", "Transactions"]
   },
-  
-  // External tools
+
+  // Price & Market Data
+  {
+    id: "price-tracker",
+    name: "Live Price Tracker",
+    description: "Real-time Bitcoin price tracking with market data, 24-hour changes, and interactive charts.",
+    url: "/tools/price-tracker",
+    icon: "📈",
+    category: "tracking",
+    isInternal: true,
+    tags: ["Price", "Live", "Charts"],
+    featured: true
+  },
+  {
+    id: "bitcoin-news",
+    name: "Live Bitcoin News",
+    description: "Real-time Bitcoin news feed with auto-updates, market analysis, and community discussions.",
+    url: "/news",
+    icon: "📰",
+    category: "tracking", 
+    isInternal: true,
+    tags: ["News", "Live", "Market"]
+  },
+
+  // Blockchain Tools
+  {
+    id: "wallet-analyzer",
+    name: "Wallet Analyzer",
+    description: "Analyze any Bitcoin wallet address with real blockchain data. View transaction history, balance, and activity patterns.",
+    url: "/wallet-analyzer",
+    icon: "🔍",
+    category: "blockchain",
+    isInternal: true,
+    tags: ["Analysis", "Blockchain", "Addresses"],
+    featured: true
+  },
   {
     id: "blockstream-explorer",
     name: "Blockstream Explorer",
-    description: "Explore Bitcoin blocks, transactions, and addresses with detailed information",
+    description: "Professional Bitcoin block explorer with detailed transaction data, mempool visualization, and Lightning Network info.",
     url: "https://blockstream.info/",
-    icon: "�",
-    category: "explorer",
-    isInternal: false
+    icon: "🔗",
+    category: "blockchain",
+    isInternal: false,
+    tags: ["Explorer", "Professional", "Lightning"]
   },
   {
     id: "mempool-space",
     name: "Mempool.space",
-    description: "Real-time Bitcoin network statistics and mempool visualizer",
+    description: "Beautiful Bitcoin mempool visualizer with real-time fee estimates, transaction tracking, and network statistics.",
     url: "https://mempool.space/",
-    icon: "�",
-    category: "explorer",
-    isInternal: false
+    icon: "🌊",
+    category: "blockchain", 
+    isInternal: false,
+    tags: ["Mempool", "Visualization", "Fees"]
   },
+
+  // Wallet & Security
   {
-    id: "lightning-network-explorer",
-    name: "Lightning Network Explorer",
-    description: "Explore Lightning Network channels, nodes, and network capacity",
-    url: "https://1ml.com/",
-    icon: "🌐",
-    category: "explorer",
-    isInternal: false
+    id: "hardware-wallets",
+    name: "Hardware Wallet Guide",
+    description: "Compare the best hardware wallets for Bitcoin storage. Reviews, setup guides, and security best practices.",
+    url: "/decentralized-wallet",
+    icon: "🔐",
+    category: "wallets",
+    isInternal: true,
+    tags: ["Hardware", "Security", "Storage"],
+    featured: true
   },
-  {
-    id: "lightning-wallets",
-    name: "Lightning Wallets",
-    description: "Discover the best Lightning Network wallets for instant Bitcoin payments",
-    url: "https://lightningnetworkstores.com/wallets",
-    icon: "⚡",
-    category: "wallet",
-    isInternal: false
-  },
+
+  // Education
   {
     id: "bitcoin-whitepaper",
     name: "Bitcoin Whitepaper",
-    description: "Read Satoshi Nakamoto's original Bitcoin whitepaper",
+    description: "Read Satoshi Nakamoto's original Bitcoin whitepaper - the foundational document that started the revolution.",
     url: "https://bitcoin.org/bitcoin.pdf",
-    icon: "�",
+    icon: "📜",
     category: "education",
-    isInternal: false
+    isInternal: false,
+    tags: ["Whitepaper", "Satoshi", "Foundational"]
+  },
+  {
+    id: "rabbit-hole",
+    name: "Bitcoin Rabbit Hole",
+    description: "Dive deep into Bitcoin with curated educational content, advanced concepts, and comprehensive learning paths.",
+    url: "/rabbit-hole",
+    icon: "🐰",
+    category: "education",
+    isInternal: true,
+    tags: ["Learning", "Advanced", "Deep Dive"]
   },
   {
     id: "node-runner",
-    name: "Node Runner Guide",
-    description: "Learn how to run your own Bitcoin node with step-by-step guides",
+    name: "Run a Bitcoin Node",
+    description: "Complete guide to running your own Bitcoin node. Step-by-step tutorials for sovereignty and network support.",
     url: "https://node.guide/",
-    icon: "�️",
+    icon: "🖥️",
     category: "education",
-    isInternal: false
-  }
-];
-
-// Bitcoin earning apps and opportunities
-const earningApps = [
+    isInternal: false,
+    tags: ["Node", "Sovereignty", "Network"]
+  },
   {
-    id: "zbd",
+    id: "popular-videos",
+    name: "Popular Bitcoin Videos",
+    description: "Curated collection of the most important Bitcoin videos, documentaries, and educational content.",
+    url: "/videos",
+    icon: "📺",
+    category: "education",
+    isInternal: true,
+    tags: ["Videos", "Documentary", "Popular"]
+  },
+  {
+    id: "buy-bitcoin-guide",
+    name: "Buy Bitcoin Guide",
+    description: "Complete guide on how to buy Bitcoin safely. Compare exchanges, methods, and best practices for beginners.",
+    url: "/buy-bitcoin",
+    icon: "💰",
+    category: "education",
+    isInternal: true,
+    tags: ["Buying", "Exchanges", "Guide"],
+    featured: true
+  },
+
+  // Earning & Opportunities
+  {
+    id: "zbd-gaming",
     name: "ZBD Gaming",
-    description: "Level up your gaming and earn Bitcoin. Get $2 instantly when you verify your identity.",
+    description: "Level up your gaming and earn Bitcoin. Get $2 instantly when you verify your identity. Play games while stacking sats.",
     url: "https://zbd.link/hcHi/invite?af_sub1=25DPZ4&deep_link_value=fwb_two_for_two",
     icon: "🎮",
+    category: "earning",
+    isInternal: false,
+    tags: ["Gaming", "$2 Bonus", "Instant"],
     bonus: "$2 Bitcoin",
-    category: "gaming"
+    difficulty: "Easy"
   },
   {
-    id: "yotta", 
-    name: "Yotta Banking",
-    description: "Banking app with crypto rewards and games. Get $2 credits with code COOPER.",
+    id: "yotta-banking",
+    name: "Yotta Banking", 
+    description: "Banking app with crypto rewards and prize games. Get $2 credits with referral code COOPER. Save and earn simultaneously.",
     url: "https://join.withyotta.com/COOPER",
     icon: "🏦",
+    category: "earning",
+    isInternal: false,
+    tags: ["Banking", "$2 Credits", "Prizes"],
     bonus: "$2 Credits",
     code: "COOPER",
-    category: "banking"
-  },
-  {
-    id: "ember-fund",
-    name: "Ember Fund Mining",
-    description: "Bitcoin mining app - earn crypto while using your phone.",
-    url: "https://emberfund.onelink.me/ljTI/jgwznb5o?mining_referrer_id=MNG8PVI6T00",
-    icon: "⛏️",
-    code: "MNG8PVI6T00",
-    category: "mining"
+    difficulty: "Easy"
   },
   {
     id: "sats-faucet",
     name: "Sats Faucet",
-    description: "Free Bitcoin faucet - earn small amounts of Bitcoin regularly.",
-    url: "https://satsfaucet.com/register?r=Spock",
+    description: "Reliable Bitcoin faucet with hourly claims. Perfect for learning about Bitcoin transactions and getting your first satoshis.",
+    url: "https://satsfaucet.com/register?r=Spock", 
     icon: "🚰",
+    category: "earning",
+    isInternal: false,
+    tags: ["Faucet", "Hourly", "Learning"],
     code: "Spock",
-    category: "faucet"
+    difficulty: "Easy"
   },
   {
     id: "cloud-mine",
     name: "Cloud Mine Crypto",
-    description: "Earn crypto by tracking your sleep! 10% bonus with referral code.",
+    description: "Earn crypto by tracking your sleep! Passive earning while you rest with 10% referral bonus. Health meets wealth building.",
     url: "https://cloudminecrypto.com/?invite_code=V4ex9jyLXBDJG52v",
     icon: "😴",
+    category: "earning",
+    isInternal: false,
+    tags: ["Sleep Tracking", "Passive", "10% Bonus"],
     code: "V4ex9jyLXBDJG52v",
-    category: "lifestyle"
+    difficulty: "Easy"
   },
   {
-    id: "kalshi",
+    id: "ember-mining",
+    name: "Ember Fund Mining",
+    description: "Mobile Bitcoin mining simulation. Earn crypto while using your phone with background operation and referral rewards.",
+    url: "https://emberfund.onelink.me/ljTI/jgwznb5o?mining_referrer_id=MNG8PVI6T00",
+    icon: "⛏️",
+    category: "earning",
+    isInternal: false,
+    tags: ["Mobile Mining", "Background", "Simulation"],
+    code: "MNG8PVI6T00",
+    difficulty: "Medium"
+  },
+  {
+    id: "kalshi-predictions",
     name: "Kalshi Predictions",
-    description: "Prediction market platform. Both earn $10 when you sign up.",
+    description: "Prediction market platform where you can earn by forecasting real-world events. $10 signup bonus for accurate predictions.",
     url: "https://kalshi.com/sign-up/?referral=c29a8806-fb0a-4672-98ad-a11e6ff97a96&m=true",
     icon: "🔮",
-    bonus: "$10 Each",
-    category: "trading"
-  }
-];
-
-// Bitcoin stacking strategies and platforms
-const stackingStrategies = [
-  {
-    id: "personal-strategy",
-    name: "🎯 My Personal Stack Strategy",
-    description: "A comprehensive, step-by-step approach combining multiple methods for optimal Bitcoin accumulation. Learn my proven strategy with real referral links.",
-    category: "strategy",
-    url: "/paths/personal-strategy",
-    featured: true,
-    buttonText: "View Complete Strategy"
-  },
-  {
-    id: "strike",
-    name: "Strike",
-    description: "Buy Bitcoin instantly with zero fees. Lightning-fast purchases and the ability to earn Bitcoin through direct deposit.",
-    category: "buy",
-    url: "https://invite.strike.me/cooper",
-    icon: "⚡",
-    buttonText: "Start with Strike"
-  },
-  {
-    id: "swan",
-    name: "Swan Bitcoin", 
-    description: "Automate your Bitcoin savings with dollar-cost averaging. Set up recurring purchases consistently over time.",
-    category: "dca",
-    url: "https://www.swanbitcoin.com/cooper",
-    icon: "🦢",
-    buttonText: "Start Stacking"
-  },
-  {
-    id: "fold",
-    name: "Fold Card",
-    description: "Earn Bitcoin rewards on every purchase with the Fold debit card. Get up to 1% back in Bitcoin when you shop.",
-    category: "earn",
-    url: "#", // Add actual referral when available
-    icon: "💳",
-    buttonText: "Join Fold"
-  },
-  {
-    id: "fountain",
-    name: "Fountain",
-    description: "Earn Bitcoin by listening to podcasts. Get rewarded in sats for discovering new content and engaging with shows.",
-    category: "earn",
-    url: "#", // Add actual referral when available
-    icon: "🎧",
-    buttonText: "Join Fountain"
-  },
-  {
-    id: "bitrefill",
-    name: "Bitrefill",
-    description: "Buy gift cards with Bitcoin and earn rewards. Shop at thousands of stores while stacking sats through loyalty program.",
-    category: "spend",
-    url: "#", // Add actual referral when available
-    icon: "🎁",
-    buttonText: "Start Shopping"
+    category: "earning",
+    isInternal: false,
+    tags: ["Predictions", "$10 Bonus", "Markets"],
+    bonus: "$10 Bonus",
+    difficulty: "Advanced"
   }
 ];
 
 export default function ToolsPage() {
+  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Enhanced filter function with better search capabilities
+  const filteredTools = bitcoinTools.filter(tool => {
+    const matchesCategory = activeCategory === 'all' || tool.category === activeCategory;
+    
+    if (searchQuery.trim() === '') {
+      return matchesCategory;
+    }
+    
+    const searchLower = searchQuery.toLowerCase();
+    const matchesSearch = 
+      tool.name.toLowerCase().includes(searchLower) ||
+      tool.description.toLowerCase().includes(searchLower) ||
+      tool.tags?.some(tag => tag.toLowerCase().includes(searchLower)) ||
+      tool.bonus?.toLowerCase().includes(searchLower) ||
+      tool.code?.toLowerCase().includes(searchLower) ||
+      tool.difficulty?.toLowerCase().includes(searchLower) ||
+      toolCategories[tool.category as keyof typeof toolCategories]?.name.toLowerCase().includes(searchLower);
+    
+    return matchesCategory && matchesSearch;
+  });
+
+  // Clear search when category changes
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    setSearchQuery(''); // Clear search to show all tools in the new category
+  };
 
   return (
-    <div className="bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       {/* Header */}
-      <section className="bg-hero-pattern section-padding">
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
-              Bitcoin <span className="bg-gradient-to-r from-orange-600 to-bitcoin-orange bg-clip-text text-transparent">Tools</span>
+      <section className="bg-gradient-to-r from-bitcoin-orange to-orange-600 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold mb-6">
+              <span className="text-2xl">🛠️</span>
+              BITCOIN TOOLS HUB
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              Essential Bitcoin <span className="text-yellow-200">Tools</span>
             </h1>
-            <p className="text-xl text-gray-600">
-              Essential Bitcoin utilities, calculators, and resources to enhance your 
-              Bitcoin journey and deepen your understanding.
+            <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed max-w-4xl mx-auto">
+              Comprehensive collection of Bitcoin calculators, analyzers, and essential tools. 
+              Everything you need for your Bitcoin journey in one place.
             </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 text-center">
+                <div className="text-2xl mb-1">🔧</div>
+                <div className="text-sm font-medium">Professional Tools</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 text-center">
+                <div className="text-2xl mb-1">📊</div>
+                <div className="text-sm font-medium">Live Data</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 text-center">
+                <div className="text-2xl mb-1">🔐</div>
+                <div className="text-sm font-medium">Secure & Private</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3 text-center">
+                <div className="text-2xl mb-1">⚡</div>
+                <div className="text-sm font-medium">Lightning Fast</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Filter Pills */}
-      <section className="py-8 bg-white/80 backdrop-blur-sm border-b border-gray-200/50">
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button className="px-4 py-2 bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white rounded-full font-medium shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transition-all duration-300 transform hover:scale-105">
-              All Tools
-            </button>
-            <button className="px-4 py-2 bg-gray-100/80 backdrop-blur-sm text-gray-700 rounded-full font-medium hover:bg-bitcoin-orange/10 hover:text-bitcoin-orange hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-              Calculators
-            </button>
-            <button className="px-4 py-2 bg-gray-100/80 backdrop-blur-sm text-gray-700 rounded-full font-medium hover:bg-bitcoin-orange/10 hover:text-bitcoin-orange hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-              Explorers
-            </button>
-            <button className="px-4 py-2 bg-gray-100/80 backdrop-blur-sm text-gray-700 rounded-full font-medium hover:bg-bitcoin-orange/10 hover:text-bitcoin-orange hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-              Wallets
-            </button>
-            <button className="px-4 py-2 bg-gray-100/80 backdrop-blur-sm text-gray-700 rounded-full font-medium hover:bg-bitcoin-orange/10 hover:text-bitcoin-orange hover:shadow-lg transition-all duration-300 transform hover:scale-105">
-              Education
-            </button>
+      {/* Tools Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Enhanced Search and Filter */}
+          <div className="mb-12">
+            {/* Search Bar */}
+            <div className="mb-6">
+              <div className="relative max-w-2xl mx-auto">
+                <input
+                  type="text"
+                  placeholder="Search tools by name, category, features, or bonus codes..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-6 py-4 pl-14 text-lg border-2 border-gray-200 rounded-2xl focus:ring-2 focus:ring-bitcoin-orange focus:border-bitcoin-orange shadow-lg transition-all duration-300"
+                />
+                <div className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl">
+                  🔍
+                </div>
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xl"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+              {searchQuery && (
+                <div className="text-center mt-3 text-gray-600">
+                  Found {filteredTools.length} tool{filteredTools.length !== 1 ? 's' : ''} matching "{searchQuery}"
+                </div>
+              )}
+            </div>
+            
+            {/* Category Filter */}
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+              <button
+                onClick={() => handleCategoryChange('all')}
+                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 border-2 text-sm sm:text-base ${
+                  activeCategory === 'all'
+                    ? 'bg-bitcoin-orange text-white border-bitcoin-orange shadow-lg scale-105'
+                    : 'bg-white text-gray-700 border-gray-200 hover:border-bitcoin-orange hover:bg-bitcoin-orange/5 hover:scale-105'
+                }`}
+              >
+                <span className="sm:hidden">🛠️ All ({bitcoinTools.length})</span>
+                <span className="hidden sm:inline">🛠️ All Tools ({bitcoinTools.length})</span>
+              </button>
+              {Object.entries(toolCategories).map(([key, category]) => {
+                const categoryCount = bitcoinTools.filter(tool => tool.category === key).length;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => handleCategoryChange(key)}
+                    className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 border-2 text-sm sm:text-base ${
+                      activeCategory === key
+                        ? 'bg-bitcoin-orange text-white border-bitcoin-orange shadow-lg scale-105'
+                        : 'bg-white text-gray-700 border-gray-200 hover:border-bitcoin-orange hover:bg-bitcoin-orange/5 hover:scale-105'
+                    }`}
+                  >
+                    <span className="sm:hidden">{category.icon} ({categoryCount})</span>
+                    <span className="hidden sm:inline">{category.icon} {category.name} ({categoryCount})</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Tools Grid */}
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto container-padding">
+          {/* Tools Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {bitcoinTools.map((tool) => (
+            {filteredTools.map((tool) => (
               <div
                 key={tool.id}
-                className="bg-white/80 backdrop-blur-sm border-2 border-gray-200/50 hover:border-bitcoin-orange rounded-xl p-6 hover:shadow-2xl hover:shadow-bitcoin-orange/20 transition-all duration-300 group transform hover:-translate-y-2 hover:scale-105"
+                className="group bg-white rounded-2xl border-2 border-gray-200 hover:border-bitcoin-orange hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
               >
-                {/* Category Badge & Icon */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-2">
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                      tool.category === 'calculator' 
-                        ? 'bg-blue-100 text-blue-800'
-                        : tool.category === 'wallet'
-                        ? 'bg-green-100 text-green-800'
-                        : tool.category === 'explorer'
-                        ? 'bg-purple-100 text-purple-800'
-                        : tool.category === 'dashboard'
-                        ? 'bg-orange-100 text-orange-800'
-                        : tool.category === 'education'
-                        ? 'bg-indigo-100 text-indigo-800'
-                        : 'bg-gray-100 text-gray-800'
-                    }`}>
-                      {tool.category.toUpperCase()}
-                    </span>
-                    {tool.isInternal && (
-                      <span className="px-2 py-1 rounded-full text-xs font-medium bg-bitcoin-orange/20 text-bitcoin-orange">
-                        BUILT-IN
+                <div className="p-6">
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        tool.category === 'calculators' ? 'bg-blue-100 text-blue-800' :
+                        tool.category === 'tracking' ? 'bg-green-100 text-green-800' :
+                        tool.category === 'blockchain' ? 'bg-purple-100 text-purple-800' :
+                        tool.category === 'wallets' ? 'bg-orange-100 text-orange-800' :
+                        tool.category === 'education' ? 'bg-indigo-100 text-indigo-800' :
+                        'bg-emerald-100 text-emerald-800'
+                      }`}>
+                        {toolCategories[tool.category as keyof typeof toolCategories]?.name}
                       </span>
-                    )}
+                      {tool.featured && (
+                        <span className="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
+                          ⭐ Featured
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-2xl">{tool.icon}</div>
                   </div>
-                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                    {tool.icon}
-                  </div>
-                </div>
 
-                {/* Tool Name */}
-                <h2 className="text-xl font-bold text-black mb-3 group-hover:text-bitcoin-orange transition-colors">
-                  {tool.name}
-                </h2>
+                  {/* Content */}
+                  <h3 className="font-bold text-gray-900 mb-2 text-lg">{tool.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{tool.description}</p>
 
-                {/* Description */}
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {tool.description}
-                </p>
-
-                {/* CTA Button */}
-                {tool.isInternal ? (
-                  <Link
-                    href={tool.url}
-                    className="w-full bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 text-center block shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/50 transform hover:-translate-y-1 hover:scale-105"
-                  >
-                    Use Tool
-                  </Link>
-                ) : (
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-center block shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
-                  >
-                    Visit Site ↗
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Earn Bitcoin Section */}
-      <section className="section-padding bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-              🎯 Earn Bitcoin
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Legitimate ways to earn small amounts of Bitcoin through apps, games, and services. 
-              Perfect for getting your first satoshis or earning while you learn!
-            </p>
-          </div>
-
-          {/* Earning Apps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {earningApps.map((app) => (
-              <div
-                key={app.id}
-                className="bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 hover:border-green-400 rounded-xl p-6 hover:shadow-2xl hover:shadow-green-400/20 transition-all duration-300 group transform hover:-translate-y-2 hover:scale-105"
-              >
-                {/* Category Badge & Icon */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    app.category === 'gaming' 
-                      ? 'bg-purple-100 text-purple-800'
-                      : app.category === 'banking'
-                      ? 'bg-blue-100 text-blue-800'
-                      : app.category === 'mining'
-                      ? 'bg-orange-100 text-orange-800'
-                      : app.category === 'faucet'
-                      ? 'bg-green-100 text-green-800'
-                      : app.category === 'lifestyle'
-                      ? 'bg-pink-100 text-pink-800'
-                      : 'bg-yellow-100 text-yellow-800'
-                  }`}>
-                    {app.category.toUpperCase()}
-                  </span>
-                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                    {app.icon}
-                  </div>
-                </div>
-
-                {/* App Name */}
-                <h3 className="text-xl font-bold text-black mb-3 group-hover:text-green-600 transition-colors">
-                  {app.name}
-                </h3>
-
-                {/* Bonus/Code Display */}
-                {(app.bonus || app.code) && (
-                  <div className="mb-3 flex flex-wrap gap-2">
-                    {app.bonus && (
-                      <span className="bg-green-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                        🎁 {app.bonus}
-                      </span>
-                    )}
-                    {app.code && (
-                      <span className="bg-gray-800 text-white px-3 py-1 rounded-lg text-sm font-mono">
-                        CODE: {app.code}
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                {/* Description */}
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {app.description}
-                </p>
-
-                {/* CTA Button */}
-                <a
-                  href={app.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-xl font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 text-center block shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
-                >
-                  Start Earning ↗
-                </a>
-              </div>
-            ))}
-          </div>
-
-          {/* Disclaimer */}
-          <div className="mt-12 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-xl">
-            <div className="flex items-start">
-              <div className="text-yellow-400 text-xl mr-3">⚠️</div>
-              <div>
-                <h4 className="font-semibold text-yellow-800 mb-2">Important Disclaimer</h4>
-                <p className="text-yellow-700 text-sm leading-relaxed">
-                  These apps offer small amounts of Bitcoin for activities like gaming, surveys, or referrals. 
-                  While legitimate, earnings are typically modest. Always research apps thoroughly, never invest more than you can afford to lose, 
-                  and remember that nothing replaces proper Bitcoin education and dollar-cost averaging for building meaningful wealth.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stacking Strategies Section */}
-      <section className="section-padding bg-gradient-to-br from-bitcoin-orange/5 to-orange-100/50">
-        <div className="max-w-7xl mx-auto container-padding">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-bitcoin-orange to-orange-600 bg-clip-text text-transparent">
-              🎯 Bitcoin Stacking Strategies
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Proven platforms and methods to stack Bitcoin. Start with my personal strategy, 
-              then explore additional platforms to maximize your Bitcoin accumulation.
-            </p>
-          </div>
-
-          {/* Featured Personal Strategy */}
-          <div className="mb-12">
-            <div className="bg-gradient-to-r from-bitcoin-orange to-orange-600 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-all duration-300">
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-4">🎯</div>
-                <h3 className="text-3xl font-bold mb-4">My Personal Stack Strategy</h3>
-                <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                  The exact step-by-step approach I use to stack Bitcoin efficiently. 
-                  Includes all my referral links and detailed explanations of each method.
-                </p>
-              </div>
-              <div className="text-center">
-                <Link
-                  href="/paths/personal-strategy"
-                  className="inline-block bg-white text-bitcoin-orange px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                >
-                  View Complete Strategy →
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Other Stacking Methods Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {stackingStrategies.filter(strategy => !strategy.featured).map((strategy) => (
-              <div
-                key={strategy.id}
-                className="bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 hover:border-bitcoin-orange rounded-xl p-6 hover:shadow-2xl hover:shadow-bitcoin-orange/20 transition-all duration-300 group transform hover:-translate-y-2 hover:scale-105"
-              >
-                {/* Category Badge & Icon */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    strategy.category === 'earn' 
-                      ? 'bg-green-100 text-green-800'
-                      : strategy.category === 'buy'
-                      ? 'bg-blue-100 text-blue-800'
-                      : strategy.category === 'dca'
-                      ? 'bg-purple-100 text-purple-800'
-                      : strategy.category === 'spend'
-                      ? 'bg-orange-100 text-orange-800'
-                      : 'bg-gray-100 text-gray-800'
-                  }`}>
-                    {strategy.category.toUpperCase()}
-                  </span>
-                  {strategy.icon && (
-                    <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                      {strategy.icon}
+                  {/* Tags */}
+                  {tool.tags && (
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {tool.tags.slice(0, 3).map((tag, index) => (
+                        <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   )}
+
+                  {/* Bonus/Code Info */}
+                  {(tool.bonus || tool.code) && (
+                    <div className="space-y-1 mb-4 p-3 bg-green-50 rounded-lg border border-green-200">
+                      {tool.bonus && (
+                        <div className="text-sm font-medium text-green-700">
+                          🎁 {tool.bonus}
+                        </div>
+                      )}
+                      {tool.code && (
+                        <div className="text-sm text-green-600">
+                          CODE: <code className="bg-green-100 px-1 rounded text-xs font-mono">{tool.code}</code>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Action Button */}
+                  {tool.isInternal ? (
+                    <Link
+                      href={tool.url}
+                      className="block w-full text-center bg-gradient-to-r from-bitcoin-orange to-orange-600 hover:from-orange-600 hover:to-bitcoin-orange text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                    >
+                      Use Tool →
+                    </Link>
+                  ) : (
+                    <a
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full text-center bg-gradient-to-r from-bitcoin-orange to-orange-600 hover:from-orange-600 hover:to-bitcoin-orange text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                    >
+                      Visit Tool ↗
+                    </a>
+                  )}
                 </div>
-
-                {/* Strategy Name */}
-                <h3 className="text-xl font-bold text-black mb-3 group-hover:text-bitcoin-orange transition-colors">
-                  {strategy.name}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {strategy.description}
-                </p>
-
-                {/* CTA Button */}
-                {strategy.url.startsWith('/') ? (
-                  <Link
-                    href={strategy.url}
-                    className="w-full bg-gradient-to-r from-bitcoin-orange to-orange-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 text-center block shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
-                  >
-                    {strategy.buttonText}
-                  </Link>
-                ) : (
-                  <a
-                    href={strategy.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-gradient-to-r from-bitcoin-orange to-orange-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 text-center block shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
-                  >
-                    {strategy.buttonText} ↗
-                  </a>
-                )}
               </div>
             ))}
           </div>
 
-          {/* Strategy Note */}
-          <div className="mt-12 p-6 bg-bitcoin-orange/10 border-l-4 border-bitcoin-orange rounded-r-xl">
-            <div className="flex items-start">
-              <div className="text-bitcoin-orange text-xl mr-3">💡</div>
-              <div>
-                <h4 className="font-semibold text-bitcoin-orange mb-2">Stacking Strategy Tip</h4>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  The most effective approach combines multiple methods: start with my personal strategy as your foundation, 
-                  then layer in additional platforms based on your lifestyle and risk tolerance. 
-                  Dollar-cost averaging remains the most important principle for long-term wealth building.
-                </p>
+          {/* Enhanced No Results */}
+          {filteredTools.length === 0 && (
+            <div className="text-center py-16 bg-white rounded-2xl border-2 border-gray-100">
+              <div className="text-6xl mb-6">🔍</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                {searchQuery ? `No tools found for "${searchQuery}"` : 'No tools in this category'}
+              </h3>
+              <div className="space-y-3 max-w-md mx-auto">
+                <p className="text-gray-600">Try searching for:</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {['calculator', 'price', 'wallet', 'faucet', 'earning', 'news'].map(suggestion => (
+                    <button
+                      key={suggestion}
+                      onClick={() => setSearchQuery(suggestion)}
+                      className="px-3 py-1 bg-gray-100 hover:bg-bitcoin-orange hover:text-white text-gray-700 rounded-full text-sm transition-colors duration-200"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => {
+                    setSearchQuery('');
+                    setActiveCategory('all');
+                  }}
+                  className="inline-block mt-4 px-6 py-2 bg-bitcoin-orange text-white rounded-xl hover:bg-orange-600 transition-colors duration-200"
+                >
+                  Show All Tools
+                </button>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Featured Section */}
-      <section className="section-padding bg-subtle-pattern">
-        <div className="max-w-4xl mx-auto container-padding">
-          <div className="bg-gradient-to-r from-orange-600 to-bitcoin-orange rounded-3xl p-8 text-white text-center shadow-2xl">
-            <h2 className="text-3xl font-bold mb-4">
-              Start Your Bitcoin Journey
+      {/* Personal Strategy CTA */}
+      <section className="py-16 bg-gradient-to-br from-bitcoin-orange/10 to-orange-200/20">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-gradient-to-r from-bitcoin-orange to-orange-600 rounded-3xl p-8 text-white text-center shadow-2xl">
+            <div className="text-5xl mb-4">🎯</div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Start Your Bitcoin Journey?
             </h2>
-            <p className="text-xl mb-6 opacity-90">
-              These tools will help you understand Bitcoin better, track your progress, 
-              and make informed decisions on your journey to financial sovereignty.
+            <p className="text-xl mb-8 opacity-90 leading-relaxed">
+              Get my complete step-by-step Bitcoin accumulation strategy. Learn exactly how I stack sats, 
+              which tools I use daily, and access all my referral links for maximum benefits.
             </p>
+            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105">
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
                 <div className="text-2xl mb-2">📊</div>
-                <div className="font-semibold">Calculate</div>
-                <div className="text-sm opacity-80">DCA performance</div>
+                <div className="font-semibold">Calculate & Track</div>
+                <div className="text-sm opacity-80">DCA performance & goals</div>
               </div>
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105">
-                <div className="text-2xl mb-2">🔍</div>
-                <div className="font-semibold">Explore</div>
-                <div className="text-sm opacity-80">Blockchain data</div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
+                <div className="text-2xl mb-2">🎯</div>
+                <div className="font-semibold">Earn & Stack</div>
+                <div className="text-sm opacity-80">Multiple income streams</div>
               </div>
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105">
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
                 <div className="text-2xl mb-2">📚</div>
-                <div className="font-semibold">Learn</div>
-                <div className="text-sm opacity-80">Bitcoin fundamentals</div>
+                <div className="font-semibold">Learn & Grow</div>
+                <div className="text-sm opacity-80">Continuous education</div>
               </div>
             </div>
-            <a
+
+            <Link
               href="/personal-strategy"
-              className="bg-white text-bitcoin-orange px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 inline-block shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
+              className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm border border-white/30 hover:border-white/50 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-white/30 hover:shadow-xl hover:-translate-y-1"
             >
-              View My Strategy
-            </a>
+              View My Complete Strategy
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import referrals from "../../../data/referrals.json";
 
 export const metadata = {
   title: "Buy Bitcoin | Satoshi's Path",
@@ -16,7 +17,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer", "Debit Card", "Credit Card"],
       countries: "100+ countries",
       logo: "🟦",
-      referralLink: "https://coinbase.com/join/cooper_stack"
+      referralLink: referrals.exchanges.coinbase
     },
     {
       name: "Kraken",
@@ -27,7 +28,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer", "Wire Transfer"],
       countries: "70+ countries",
       logo: "🟣",
-      referralLink: "https://r.kraken.com/cooper"
+      referralLink: referrals.exchanges.kraken
     },
     {
       name: "Gemini",
@@ -49,7 +50,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer", "Debit Card"],
       countries: "US, El Salvador, Argentina",
       logo: "⚡",
-      referralLink: "https://strike.me/cooper"
+      referralLink: referrals.exchanges.strike
     },
     {
       name: "Swan Bitcoin",
@@ -60,7 +61,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer"],
       countries: "US only",
       logo: "🦢",
-      referralLink: "https://swanbitcoin.com/coopstack"
+      referralLink: referrals.exchanges.swan
     },
     {
       name: "River Financial",
@@ -71,7 +72,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer", "Wire Transfer"],
       countries: "US only",
       logo: "🌊",
-      referralLink: "https://river.com/signup?r=cooper"
+      referralLink: referrals.exchanges.river
     }
   ];
 

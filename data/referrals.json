@@ -1,19 +1,112 @@
 {
-  "referralLinks": {
-    "fold": "https://use.foldapp.com/r/COOPER123",
-    "strike": "https://strike.me/cooper",
-    "swan": "https://swanbitcoin.com/coopstack",
-    "fountain": "https://fountain.fm/invite/cooper",
-    "bitrefill": "https://bitrefill.com/?ref=cooper",
-    "river": "https://river.com/signup?r=cooper",
-    "coinbase": "https://coinbase.com/join/cooper_stack",
+  "exchanges": {
+    "coinbase": "https://coinbase.onelink.me/2ysS/npinudo9?src=ios-link",
     "kraken": "https://r.kraken.com/cooper",
+    "strike": "https://invite.strike.me/cooper",
+    "swan": "https://www.swanbitcoin.com/cooper",
+    "river": "https://river.com/signup?r=cooper"
+  },
+  "hardware_wallets": {
     "ledger": "https://shop.ledger.com/?r=cooper",
     "trezor": "https://trezor.io/r/cooper",
-    "cointracker": "https://www.cointracker.io/r/cooper",
-    "koinly": "https://koinly.io/r/cooper",
-    "lolli": "https://lolli.com/r/cooper",
-    "compass": "https://compassmining.io/r/cooper"
+    "tangem": "https://tangem.com/invite/E6LBFB"
+  },
+  "earning_apps": {
+    "speed_wallet": {
+      "url": "https://links.speed.app/referral?referral_code=83D6TV",
+      "code": "83D6TV",
+      "bonus": "₿0.000005 cashback",
+      "description": "Seamless Bitcoin wallet and payment experience"
+    },
+    "zbd": {
+      "url": "https://zbd.link/hcHi/invite?af_sub1=25DPZ4&deep_link_value=fwb_two_for_two",
+      "bonus": "$2 Bitcoin",
+      "description": "Gaming app with Bitcoin rewards"
+    },
+    "yotta": {
+      "url": "https://join.withyotta.com/COOPER",
+      "bonus": "$2 credits",
+      "description": "Banking app with crypto rewards",
+      "code": "COOPER"
+    },
+    "ember_fund": {
+      "url": "https://emberfund.onelink.me/ljTI/jgwznb5o?mining_referrer_id=MNG8PVI6T00",
+      "code": "MNG8PVI6T00",
+      "description": "Bitcoin mining app"
+    },
+    "fold": {
+      "url": "https://use.foldapp.com/r/COOPER123",
+      "description": "Earn Bitcoin rewards on purchases"
+    },
+    "lolli": {
+      "url": "https://lolli.com/r/cooper",
+      "description": "Bitcoin back when shopping online"
+    },
+    "smiles_bitcoin": {
+      "url": "https://join.smilesbitcoin.com/coopfeathy374",
+      "description": "Bitcoin rewards app"
+    }
+  },
+  "faucets": {
+    "sats_faucet": {
+      "url": "https://satsfaucet.com/register?r=Spock",
+      "code": "Spock"
+    },
+    "freebitcoin": {
+      "url": "https://freebitco.in/?r=55409682",
+      "code": "55409682"
+    }
+  },
+  "mining": {
+    "bh_mining": {
+      "url": "https://user.bhmining.org?ref=cooperfeatherstone13@gmail.com",
+      "email": "cooperfeatherstone13@gmail.com"
+    },
+    "gomining": {
+      "url": "https://gomining.com/?ref=xR7_c",
+      "code": "xR7_c"
+    },
+    "cloud_mine_crypto": {
+      "url": "https://cloudminecrypto.com/?invite_code=V4ex9jyLXBDJG52v",
+      "code": "V4ex9jyLXBDJG52v",
+      "description": "Earn crypto by tracking sleep"
+    },
+    "compass": {
+      "url": "https://compassmining.io/r/cooper",
+      "description": "Hosted mining solutions"
+    }
+  },
+  "other": {
+    "stake": {
+      "url": "https://stake.us/?c=4mbxyNdf",
+      "code": "4mbxyNdf",
+      "description": "Gaming platform"
+    },
+    "kalshi": {
+      "url": "https://kalshi.com/sign-up/?referral=c29a8806-fb0a-4672-98ad-a11e6ff97a96&m=true",
+      "bonus": "$10",
+      "description": "Prediction market"
+    },
+    "fountain": {
+      "url": "https://fountain.fm/invite/cooper",
+      "description": "Bitcoin podcast app"
+    },
+    "bitrefill": {
+      "url": "https://bitrefill.com/?ref=cooper",
+      "description": "Buy gift cards with Bitcoin"
+    },
+    "cointracker": {
+      "url": "https://www.cointracker.io/r/cooper",
+      "description": "Comprehensive crypto tax software"
+    },
+    "koinly": {
+      "url": "https://koinly.io/r/cooper",
+      "description": "Easy-to-use tax calculator"
+    },
+    "app_download": {
+      "ios_url": "https://apps.apple.com/app/id6738640672",
+      "invite_code": "SKEGCH"
+    }
   },
   "stackingMethods": [
     {
@@ -73,9 +166,9 @@
       ],
       "platforms": [
         {
-          "name": "Coinbase Pro",
+          "name": "Coinbase",
           "referralKey": "coinbase",
-          "description": "Lower fees than regular Coinbase"
+          "description": "Beginner-friendly with insurance"
         },
         {
           "name": "Kraken",
@@ -211,29 +304,6 @@
           "description": "Easy-to-use tax calculator"
         }
       ]
-    }
-  ],
-  "exchanges": [
-    {
-      "name": "Swan Bitcoin",
-      "referralKey": "swan",
-      "description": "Bitcoin-only exchange with automatic DCA",
-      "pros": ["Bitcoin-only", "Low fees", "Auto DCA"],
-      "cons": ["US only", "Limited features"]
-    },
-    {
-      "name": "Strike",
-      "referralKey": "strike",
-      "description": "Lightning-fast Bitcoin purchases with low fees",
-      "pros": ["Lightning Network", "Low fees", "Fast"],
-      "cons": ["Limited countries", "New platform"]
-    },
-    {
-      "name": "River Financial",
-      "referralKey": "river",
-      "description": "Bitcoin-only financial services",
-      "pros": ["Bitcoin-only", "Good security", "Clean UI"],
-      "cons": ["US only", "Higher minimums"]
     }
   ]
 }

@@ -82,7 +82,7 @@ export default function Home() {
       category: "intermediate", 
       difficulty: "Intermediate",
       timeCommitment: "Daily use",
-      link: "/paths"
+      link: "/earn"
     },
     {
       title: "Personal Stack Strategy",
@@ -90,7 +90,7 @@ export default function Home() {
       category: "advanced",
       difficulty: "All Levels",
       timeCommitment: "Ongoing",
-      link: "/paths/personal-strategy"
+      link: "/personal-strategy"
     }
   ];
 
@@ -247,7 +247,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/tools"
-                className="border-2 border-bitcoin-orange text-bitcoin-orange px-8 py-3 rounded-xl font-semibold hover:bg-bitcoin-orange hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 inline-block"
+                className="border-2 border-bitcoin-orange text-bitcoin-orange px-8 py-3 rounded-xl font-semibold hover:bg-bitcoin-orange hover:text-white transition-colors duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 inline-block"
               >
                 Use Bitcoin Tools
               </Link>

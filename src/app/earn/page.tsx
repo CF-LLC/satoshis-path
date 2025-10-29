@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 // Import referral data
-const referrals = require('../../../referrals.json');
+const referrals = require('../../../data/referrals.json');
 
 export default function EarnBitcoinPage() {
   type EarningItem = {
@@ -159,7 +159,7 @@ export default function EarnBitcoinPage() {
         <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
           <div className="max-w-7xl mx-auto container-padding">
             <div className="text-center mb-12">
-              <h2 className={`text-4xl font-bold mb-4 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
+              <h2 className={`text-4xl font-bold mb-4 text-gray-900`}>
                 {category.title}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">

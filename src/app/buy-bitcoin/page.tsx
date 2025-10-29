@@ -28,7 +28,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer", "Wire Transfer"],
       countries: "70+ countries",
       logo: "🟣",
-      referralLink: referrals.exchanges.kraken
+      referralLink: typeof referrals.exchanges.kraken === 'string' ? referrals.exchanges.kraken : referrals.exchanges.kraken.url
     },
     {
       name: "Gemini",

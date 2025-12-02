@@ -276,8 +276,8 @@ const strategySteps: StrategyStep[] = [
       {
         name: "Gemini Credit Card",
         url: "https://exchange.gemini.com/register?referral=kwvg8w8fr&type=referral",
-        description: "Earn up to 3% back in crypto on every purchase. Stack sats on everyday spending!",
-        bonus: "Up to 3% crypto rewards"
+        description: "Earn crypto rewards on every purchase: 4% on Gas/EV/Transit (up to $300/mo), 3% on Food & Dining, 2% on Groceries, 1% on everything else.",
+        bonus: "Up to 4% crypto rewards"
       }
     ]
   },

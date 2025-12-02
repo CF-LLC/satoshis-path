@@ -145,11 +145,11 @@ export default function BuyBitcoinPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 bg-linear-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <span className="text-2xl">💰</span>
             TRUSTED PLATFORMS
           </div>
@@ -169,7 +169,7 @@ export default function BuyBitcoinPage() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {steps.map((step, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">{step.icon}</span>
                 </div>
                 <div className="w-8 h-8 bg-orange-100 text-orange-800 rounded-full flex items-center justify-center mx-auto mb-3 font-bold">
@@ -250,7 +250,7 @@ export default function BuyBitcoinPage() {
                 
                 <a
                   href={exchange.referralLink}
-                  className="w-full bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl text-center block"
+                  className="w-full bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl text-center block"
                 >
                   Get Started
                 </a>
@@ -298,7 +298,7 @@ export default function BuyBitcoinPage() {
         </div>
 
         {/* Security Tips */}
-        <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white mb-12">
+        <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white mb-12">
           <h2 className="text-2xl font-bold mb-6">Security Best Practices</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -337,7 +337,7 @@ export default function BuyBitcoinPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/tools/dca-calculator"
-                className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Calculate DCA Strategy
               </Link>

@@ -135,7 +135,7 @@ export default function EarnBitcoinPage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-bitcoin-orange via-orange-500 to-yellow-500 section-padding text-white">
+      <section className="bg-linear-to-br from-bitcoin-orange via-orange-500 to-yellow-500 section-padding text-white">
         <div className="max-w-4xl mx-auto container-padding text-center">
           <h1 className="text-5xl font-bold mb-6">
             🎯 Earn Your First Bitcoin
@@ -216,7 +216,7 @@ export default function EarnBitcoinPage() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full bg-gradient-to-r ${category.color} text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all duration-300 text-center block shadow-lg hover:shadow-xl transform hover:scale-105`}
+                    className={`w-full bg-linear-to-r ${category.color} text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-all duration-300 text-center block shadow-lg hover:shadow-xl transform hover:scale-105`}
                   >
                     Start Earning ↗
                   </a>

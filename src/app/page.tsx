@@ -140,15 +140,15 @@ export default function Home() {
                 <div className="animate-pulse">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="h-8 bg-gradient-to-r from-orange-200 to-yellow-200 rounded mb-2 animate-shimmer"></div>
+                      <div className="h-8 bg-linear-to-r from-orange-200 to-yellow-200 rounded mb-2 animate-shimmer"></div>
                       <div className="h-4 bg-gray-200 rounded"></div>
                     </div>
                     <div>
-                      <div className="h-8 bg-gradient-to-r from-orange-200 to-yellow-200 rounded mb-2 animate-shimmer"></div>
+                      <div className="h-8 bg-linear-to-r from-orange-200 to-yellow-200 rounded mb-2 animate-shimmer"></div>
                       <div className="h-4 bg-gray-200 rounded"></div>
                     </div>
                     <div>
-                      <div className="h-8 bg-gradient-to-r from-orange-200 to-yellow-200 rounded mb-2 animate-shimmer"></div>
+                      <div className="h-8 bg-linear-to-r from-orange-200 to-yellow-200 rounded mb-2 animate-shimmer"></div>
                       <div className="h-4 bg-gray-200 rounded"></div>
                     </div>
                   </div>
@@ -158,7 +158,7 @@ export default function Home() {
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
               Walk the Path. Stack{" "}
-              <span className="bg-gradient-to-r from-orange-600 to-bitcoin-orange bg-clip-text text-transparent">Bitcoin Smarter.</span>
+              <span className="bg-linear-to-r from-orange-600 to-bitcoin-orange bg-clip-text text-transparent">Bitcoin Smarter.</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
               Learn proven methods to earn and save Bitcoin safely. From dollar-cost averaging 
@@ -167,7 +167,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/personal-strategy"
-                className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105"
+                className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105"
               >
                 My Strategy
               </Link>
@@ -241,7 +241,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/personal-strategy"
-                className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-8 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 inline-block"
+                className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-8 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 inline-block"
               >
                 My Strategy
               </Link>
@@ -304,7 +304,7 @@ export default function Home() {
           </p>
           <Link
             href="/personal-strategy"
-            className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 inline-block"
+            className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 inline-block"
           >
             View My Strategy
           </Link>

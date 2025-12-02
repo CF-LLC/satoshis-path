@@ -37,13 +37,13 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-black to-gray-900 text-white mt-auto">
+    <footer className="bg-linear-to-br from-black to-gray-900 text-white mt-auto">
       <div className="max-w-7xl mx-auto container-padding py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="col-span-1 lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4 group">
-              <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white p-2 rounded-xl font-bold text-xl shadow-lg group-hover:shadow-xl group-hover:shadow-bitcoin-orange/25 transition-all duration-300">
+              <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white p-2 rounded-xl font-bold text-xl shadow-lg group-hover:shadow-xl group-hover:shadow-bitcoin-orange/25 transition-all duration-300">
                 ₿
               </div>
               <span className="text-xl font-semibold group-hover:text-bitcoin-orange transition-colors duration-300">Satoshi's Path</span>
@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
             
             {/* Bitcoin Tip Section */}
-            <div className="mt-6 p-4 bg-gradient-to-r from-bitcoin-orange/10 to-orange-500/10 rounded-xl border border-bitcoin-orange/20">
+            <div className="mt-6 p-4 bg-linear-to-r from-bitcoin-orange/10 to-orange-500/10 rounded-xl border border-bitcoin-orange/20">
               <h4 className="text-bitcoin-orange font-semibold mb-3 flex items-center">
                 <span className="mr-2">⚡</span>
                 Like the content? Tip in sats!

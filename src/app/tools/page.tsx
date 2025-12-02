@@ -334,9 +334,9 @@ export default function ToolsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50">
       {/* Header */}
-      <section className="bg-gradient-to-r from-bitcoin-orange to-orange-600 text-white py-20">
+      <section className="bg-linear-to-r from-bitcoin-orange to-orange-600 text-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold mb-6">
@@ -411,14 +411,13 @@ export default function ToolsPage() {
             <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
               <button
                 onClick={() => handleCategoryChange('all')}
-                className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 border-2 text-sm sm:text-base ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 border-2 text-xs sm:text-base whitespace-nowrap ${
                   activeCategory === 'all'
                     ? 'bg-bitcoin-orange text-white border-bitcoin-orange shadow-lg scale-105'
                     : 'bg-white text-gray-700 border-gray-200 hover:border-bitcoin-orange hover:bg-bitcoin-orange/5 hover:scale-105'
                 }`}
               >
-                <span className="sm:hidden">🛠️ All ({bitcoinTools.length})</span>
-                <span className="hidden sm:inline">🛠️ All Tools ({bitcoinTools.length})</span>
+                🛠️ All Tools ({bitcoinTools.length})
               </button>
               {Object.entries(toolCategories).map(([key, category]) => {
                 const categoryCount = bitcoinTools.filter(tool => tool.category === key).length;
@@ -426,14 +425,13 @@ export default function ToolsPage() {
                   <button
                     key={key}
                     onClick={() => handleCategoryChange(key)}
-                    className={`px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 border-2 text-sm sm:text-base ${
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 border-2 text-xs sm:text-base whitespace-nowrap ${
                       activeCategory === key
                         ? 'bg-bitcoin-orange text-white border-bitcoin-orange shadow-lg scale-105'
                         : 'bg-white text-gray-700 border-gray-200 hover:border-bitcoin-orange hover:bg-bitcoin-orange/5 hover:scale-105'
                     }`}
                   >
-                    <span className="sm:hidden">{category.icon} ({categoryCount})</span>
-                    <span className="hidden sm:inline">{category.icon} {category.name} ({categoryCount})</span>
+                    {category.icon} {category.name} ({categoryCount})
                   </button>
                 );
               })}
@@ -505,7 +503,7 @@ export default function ToolsPage() {
                   {tool.isInternal ? (
                     <Link
                       href={tool.url}
-                      className="block w-full text-center bg-gradient-to-r from-bitcoin-orange to-orange-600 hover:from-orange-600 hover:to-bitcoin-orange text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      className="block w-full text-center bg-linear-to-r from-bitcoin-orange to-orange-600 hover:from-orange-600 hover:to-bitcoin-orange text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                     >
                       Use Tool →
                     </Link>
@@ -514,7 +512,7 @@ export default function ToolsPage() {
                       href={tool.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full text-center bg-gradient-to-r from-bitcoin-orange to-orange-600 hover:from-orange-600 hover:to-bitcoin-orange text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      className="block w-full text-center bg-linear-to-r from-bitcoin-orange to-orange-600 hover:from-orange-600 hover:to-bitcoin-orange text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                     >
                       Visit Tool ↗
                     </a>
@@ -560,9 +558,9 @@ export default function ToolsPage() {
       </section>
 
       {/* Personal Strategy CTA */}
-      <section className="py-16 bg-gradient-to-br from-bitcoin-orange/10 to-orange-200/20">
+      <section className="py-16 bg-linear-to-br from-bitcoin-orange/10 to-orange-200/20">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-bitcoin-orange to-orange-600 rounded-3xl p-8 text-white text-center shadow-2xl">
+          <div className="bg-linear-to-r from-bitcoin-orange to-orange-600 rounded-3xl p-8 text-white text-center shadow-2xl">
             <div className="text-5xl mb-4">🎯</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Start Your Bitcoin Journey?

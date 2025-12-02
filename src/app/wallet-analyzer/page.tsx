@@ -140,11 +140,11 @@ export default function WalletAnalyzerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50">
       <div className="max-w-4xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 bg-linear-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <span className="text-2xl">🔍</span>
             BLOCKCHAIN ANALYSIS
           </div>
@@ -185,7 +185,7 @@ export default function WalletAnalyzerPage() {
             <button
               onClick={analyzeWallet}
               disabled={loading}
-              className="w-full bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Fetching Live Data from Blockchain...' : 'Analyze Wallet (Live Data)'}
             </button>
@@ -309,7 +309,7 @@ export default function WalletAnalyzerPage() {
         </div>
 
         {/* Disclaimer */}
-        <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white">
+        <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-4">Privacy Notice</h2>
           <p className="text-orange-100 mb-4">
             Bitcoin transactions are public by design, but analyzing wallets should be done responsibly. 

@@ -125,11 +125,11 @@ export default function RabbitHolePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 bg-linear-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <span className="text-2xl">🕳️</span>
             EDUCATIONAL JOURNEY
           </div>
@@ -181,7 +181,7 @@ export default function RabbitHolePage() {
         </div>
 
         {/* Learning Path */}
-        <div className="mt-12 bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white">
+        <div className="mt-12 bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-4">Recommended Learning Path</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
@@ -225,7 +225,7 @@ export default function RabbitHolePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/personal-strategy"
-                className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 View My Strategy
               </Link>

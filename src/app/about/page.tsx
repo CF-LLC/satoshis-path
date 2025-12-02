@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 bg-linear-to-b from-gray-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
             About <span className="text-bitcoin-orange">Satoshi's Path</span>

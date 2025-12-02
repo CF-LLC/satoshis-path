@@ -217,7 +217,7 @@ const FeeEstimator = () => {
               key={estimate.priority}
               className="bg-white border-2 border-gray-200 hover:border-bitcoin-orange rounded-xl p-4 transition-all duration-300 hover:shadow-lg group"
             >
-              <div className={`bg-gradient-to-r ${estimate.color} text-white rounded-lg p-3 mb-4`}>
+              <div className={`bg-linear-to-r ${estimate.color} text-white rounded-lg p-3 mb-4`}>
                 <div className="text-lg font-bold">{estimate.label}</div>
                 <div className="text-sm opacity-90">{estimate.description}</div>
               </div>

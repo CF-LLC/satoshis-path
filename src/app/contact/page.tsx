@@ -49,10 +49,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50">
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 bg-linear-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <span className="text-2xl">📞</span>
             GET IN TOUCH
           </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
           {contactOptions.map((option) => (
             <div
               key={option.type}
-              className={`bg-gradient-to-br ${option.bgColor} rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300`}
+              className={`bg-linear-to-br ${option.bgColor} rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300`}
             >
               <h3 className={`text-xl font-bold ${option.textColor} mb-3`}>
                 {option.title}
@@ -97,7 +97,7 @@ export default function ContactPage() {
               </p>
               <a
                 href={option.mailto}
-                className={`inline-flex items-center gap-2 bg-gradient-to-r ${option.buttonColor} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+                className={`inline-flex items-center gap-2 bg-linear-to-r ${option.buttonColor} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
               >
                 Send Email
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

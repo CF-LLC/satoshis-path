@@ -222,7 +222,7 @@ const UnitConverter = () => {
               .map((conversion) => (
                 <div
                   key={conversion.unit}
-                  className="bg-gradient-to-r from-bitcoin-orange/5 to-orange-500/5 border border-bitcoin-orange/20 rounded-xl p-4"
+                  className="bg-linear-to-r from-bitcoin-orange/5 to-orange-500/5 border border-bitcoin-orange/20 rounded-xl p-4"
                 >
                   <div className="flex justify-between items-center">
                     <div>

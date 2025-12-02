@@ -174,11 +174,11 @@ export default function DecentralizedWalletPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-flex items-center gap-2 bg-linear-to-r from-orange-100 to-yellow-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <span className="text-2xl">🏦</span>
             SELF-CUSTODY
           </div>
@@ -197,21 +197,21 @@ export default function DecentralizedWalletPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🔑</span>
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">True Ownership</h3>
               <p className="text-gray-600">Control your private keys and truly own your Bitcoin. No third party can freeze or confiscate your funds.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🛡️</span>
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Enhanced Security</h3>
               <p className="text-gray-600">Eliminate counterparty risk. Your Bitcoin is only as secure as your personal security practices.</p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🌐</span>
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Censorship Resistance</h3>
@@ -304,7 +304,7 @@ export default function DecentralizedWalletPage() {
                             href={wallet.buyLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl text-center block text-sm"
+                            className="w-full bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl text-center block text-sm"
                           >
                             Buy {wallet.name}
                           </a>
@@ -367,7 +367,7 @@ export default function DecentralizedWalletPage() {
         </div>
 
         {/* Call to Action */}
-        <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white">
+        <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-2xl p-8 text-white">
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-4">Ready to Take Control of Your Bitcoin?</h2>
             <p className="text-orange-100 mb-6 max-w-2xl mx-auto">

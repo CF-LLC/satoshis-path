@@ -130,7 +130,7 @@ const PriceTracker = () => {
           <p className="text-gray-600 mb-4">{error || 'Unable to fetch Bitcoin price data'}</p>
           <button
             onClick={fetchBitcoinData}
-            className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300"
+            className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300"
           >
             Try Again
           </button>
@@ -155,7 +155,7 @@ const PriceTracker = () => {
       </div>
 
       {/* Main Price Display */}
-      <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-xl p-6 text-white mb-6">
+      <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-xl p-6 text-white mb-6">
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-3 mb-2">

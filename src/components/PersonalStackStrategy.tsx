@@ -389,7 +389,7 @@ export default function PersonalStackStrategy() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-bitcoin-orange via-orange-500 to-yellow-500 section-padding text-white">
+      <section className="bg-linear-to-br from-bitcoin-orange via-orange-500 to-yellow-500 section-padding text-white">
         <div className="max-w-4xl mx-auto container-padding text-center">
           <div className="text-6xl mb-6">🎯</div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -726,7 +726,7 @@ export default function PersonalStackStrategy() {
       </section>
 
       {/* Call to Action */}
-      <section className="section-padding bg-gradient-to-r from-bitcoin-orange to-orange-600 text-white">
+      <section className="section-padding bg-linear-to-r from-bitcoin-orange to-orange-600 text-white">
         <div className="max-w-4xl mx-auto container-padding text-center">
           <h2 className="text-3xl font-bold mb-6">
             Ready to Start Your Bitcoin Journey?

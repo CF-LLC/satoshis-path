@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50 flex items-center justify-center">
       <div className="max-w-md mx-auto text-center px-4">
         <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white rounded-full text-4xl font-bold mb-6 animate-bounce">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-linear-to-r from-orange-500 to-bitcoin-orange text-white rounded-full text-4xl font-bold mb-6 animate-bounce">
             ₿
           </div>
         </div>
@@ -20,7 +20,7 @@ export default function NotFound() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="w-full bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 inline-block"
+            className="w-full bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 inline-block"
           >
             Go Home
           </Link>

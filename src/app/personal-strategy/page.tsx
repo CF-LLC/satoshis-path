@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function PersonalStrategyPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-linear-to-br from-orange-50 to-yellow-50">
       <PersonalStackStrategy />
     </div>
   );

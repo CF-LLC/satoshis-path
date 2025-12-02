@@ -171,7 +171,7 @@ const HODLCalculator = () => {
       <button
         onClick={calculateHODL}
         disabled={loading}
-        className="w-full bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        className="w-full bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
       >
         {loading ? 'Calculating...' : 'Calculate HODL Returns'}
       </button>
@@ -185,7 +185,7 @@ const HODLCalculator = () => {
       {result && (
         <div className="mt-6 space-y-6">
           {/* Investment Summary */}
-          <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange rounded-xl p-6 text-white">
+          <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange rounded-xl p-6 text-white">
             <h3 className="text-xl font-bold mb-4">HODL Results</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
               <div>
@@ -266,8 +266,8 @@ const HODLCalculator = () => {
                 <div 
                   className={`h-full transition-all duration-1000 ${
                     result.profitLoss >= 0 
-                      ? 'bg-gradient-to-r from-green-400 to-green-500' 
-                      : 'bg-gradient-to-r from-red-400 to-red-500'
+                      ? 'bg-linear-to-r from-green-400 to-green-500' 
+                      : 'bg-linear-to-r from-red-400 to-red-500'
                   }`}
                   style={{ 
                     width: `${Math.min(100, (result.currentValue / result.initialInvestment) * 100)}%` 

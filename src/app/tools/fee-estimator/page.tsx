@@ -13,7 +13,7 @@ export default function FeeEstimatorPage() {
         <div className="max-w-7xl mx-auto container-padding">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
-              Bitcoin <span className="bg-gradient-to-r from-orange-600 to-bitcoin-orange bg-clip-text text-transparent">Fee Estimator</span>
+              Bitcoin <span className="bg-linear-to-r from-orange-600 to-bitcoin-orange bg-clip-text text-transparent">Fee Estimator</span>
             </h1>
             <p className="text-xl text-gray-600">
               Get real-time Bitcoin transaction fee recommendations based on current network conditions. 

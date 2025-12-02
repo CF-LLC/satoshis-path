@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white p-2 rounded-xl font-bold text-xl shadow-lg group-hover:shadow-xl group-hover:shadow-bitcoin-orange/25 transition-all duration-300 transform group-hover:scale-110">
+            <div className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white p-2 rounded-xl font-bold text-xl shadow-lg group-hover:shadow-xl group-hover:shadow-bitcoin-orange/25 transition-all duration-300 transform group-hover:scale-110">
               ₿
             </div>
             <span className="text-xl font-semibold text-black group-hover:text-bitcoin-orange transition-colors duration-300">
@@ -52,7 +52,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/personal-strategy"
-              className="bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105"
+              className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105"
             >
               My Strategy
             </Link>
@@ -117,7 +117,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/personal-strategy"
-                className="block bg-gradient-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 mt-4"
+                className="block bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 My Strategy

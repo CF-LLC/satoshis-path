@@ -266,6 +266,18 @@ const strategySteps: StrategyStep[] = [
         url: "https://coinbase.com/join/cooper_stack",
         description: "Beginner-friendly exchange with DCA options and educational content.",
         bonus: "Easy for beginners"
+      },
+      {
+        name: "Gemini",
+        url: "https://exchange.gemini.com/register?referral=kwvg8w8fr&type=referral",
+        description: "Regulated exchange with free withdrawals. Trade $100+ to earn $50 in crypto.",
+        bonus: "$50 in crypto"
+      },
+      {
+        name: "Gemini Credit Card",
+        url: "https://exchange.gemini.com/register?referral=kwvg8w8fr&type=referral",
+        description: "Earn up to 3% back in crypto on every purchase. Stack sats on everyday spending!",
+        bonus: "Up to 3% crypto rewards"
       }
     ]
   },

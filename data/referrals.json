@@ -9,7 +9,13 @@
     },
     "strike": "https://invite.strike.me/cooper",
     "swan": "https://www.swanbitcoin.com/cooper",
-    "river": "https://river.com/signup?r=cooper"
+    "river": "https://river.com/signup?r=cooper",
+    "gemini": {
+      "url": "https://exchange.gemini.com/register?referral=kwvg8w8fr&type=referral",
+      "code": "kwvg8w8fr",
+      "bonus": "$50 in crypto",
+      "description": "Regulated exchange with free withdrawals and credit card rewards. Trade $100+ to earn $50"
+    }
   },
   "hardware_wallets": {
     "ledger": "https://shop.ledger.com/?r=cooper",

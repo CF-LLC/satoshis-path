@@ -39,7 +39,7 @@ export default function BuyBitcoinPage() {
       paymentMethods: ["Bank Transfer", "Wire Transfer", "Debit Card"],
       countries: "30+ countries",
       logo: "🟢",
-      referralLink: "https://gemini.com/share/cooper"
+      referralLink: typeof referrals.exchanges.gemini === 'string' ? referrals.exchanges.gemini : referrals.exchanges.gemini.url
     },
     {
       name: "Strike",

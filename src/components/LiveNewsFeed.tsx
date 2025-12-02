@@ -194,7 +194,7 @@ export default function LiveNewsFeed() {
                     {article.title}
                   </span>
                 </h3>
-                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">
+                <span className="text-xs text-gray-500 whitespace-nowrap shrink-0">
                   {formatTimeAgo(article.publishedAt)}
                 </span>
               </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from "next/link";
+import AdSense from "@/components/AdSense";
 
 interface BitcoinData {
   current_price: number;
@@ -182,6 +183,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Ad Unit - After Hero Section */}
+      <AdSense 
+        adSlot="1234567890"
+        className="max-w-7xl mx-auto my-8 px-4"
+      />
+
       {/* Featured Stacking Methods */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -255,6 +262,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Ad Unit - Mid Page */}
+      <AdSense 
+        adSlot="0987654321"
+        className="max-w-7xl mx-auto my-8 px-4"
+      />
 
       {/* Statistics Section */}
       <section className="py-20 bg-gray-50">

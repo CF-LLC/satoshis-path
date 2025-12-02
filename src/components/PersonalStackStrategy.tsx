@@ -437,12 +437,12 @@ export default function PersonalStackStrategy() {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <div className="w-12 h-12 bg-bitcoin-orange text-white rounded-full flex items-center justify-center font-bold text-lg">
                           {step.id}
                         </div>
                       </div>
-                      <div className="flex-grow">
+                      <div className="grow">
                         <h3 className="text-xl font-semibold text-gray-900 mb-2">
                           {step.title}
                         </h3>

@@ -202,6 +202,14 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
+                  href="/community"
+                  className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
+                >
+                  🤝 Community
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/news"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
@@ -209,24 +217,20 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://bitcoin.org/en/notable-users"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/endorsements"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🏆 Famous Endorsements
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://store.bitcoin.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/merch"
                   className="text-gray-400 hover:text-bitcoin-orange transition-colors flex items-center gap-2"
                 >
                   🛍️ Bitcoin Merch
-                </a>
+                </Link>
               </li>
               <li>
                 <a

@@ -32,15 +32,17 @@ export default function LiveNewsFeed() {
           const response = await fetch(newsApiUrl);
           if (response.ok) {
             const data = await response.json();
-            fetchedNews = data.articles.map((article: any, index: number) => ({
-              id: `newsapi-${index}`,
-              title: article.title,
-              description: article.description || '',
-              url: article.url,
-              publishedAt: article.publishedAt,
-              source: article.source.name,
-              image: article.urlToImage
-            }));
+            fetchedNews = data.articles
+              .filter((article: any) => article.url && article.title) // Only include articles with url and title
+              .map((article: any, index: number) => ({
+                id: `newsapi-${index}`,
+                title: article.title,
+                description: article.description || '',
+                url: article.url,
+                publishedAt: article.publishedAt || new Date().toISOString(),
+                source: article.source?.name || 'Unknown',
+                image: article.urlToImage
+              }));
           }
         } catch (error) {
           console.warn('NewsAPI failed, trying RSS feeds');
@@ -62,16 +64,19 @@ export default function LiveNewsFeed() {
               const response = await fetch(rss2jsonUrl);
               if (response.ok) {
                 const data = await response.json();
-                return data.items.map((item: any, index: number) => ({
-                  id: `rss-${feedUrl.split('/')[2]}-${index}`,
-                  title: item.title,
-                  description: item.description?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || '',
-                  url: item.link,
-                  publishedAt: item.pubDate,
-                  source: data.feed?.title || feedUrl.split('/')[2],
-                  image: item.thumbnail
-                }));
+                return data.items
+                  .filter((item: any) => item.link && item.title) // Only include items with link and title
+                  .map((item: any, index: number) => ({
+                    id: `rss-${feedUrl.split('/')[2]}-${index}`,
+                    title: item.title,
+                    description: item.description?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || '',
+                    url: item.link,
+                    publishedAt: item.pubDate || new Date().toISOString(),
+                    source: data.feed?.title || feedUrl.split('/')[2],
+                    image: item.thumbnail
+                  }));
               }
+              return [];
             } catch (error) {
               console.warn(`RSS feed failed: ${feedUrl}`);
               return [];

@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 
+// Matches next.config.ts basePath for static GitHub Pages export
+const BASE = process.env.NODE_ENV === "production" ? "/satoshis-path" : "";
+
 export default function Home() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -22,7 +25,6 @@ export default function Home() {
     }
 
     if (!FORM_ENDPOINT) {
-      // Local / not-yet-connected state
       setStatus("error");
       setMessage(
         "Email signup is not connected yet. You can still view and download the checklist below."
@@ -44,8 +46,7 @@ export default function Home() {
         setStatus("success");
         setMessage("You're on the list. Check your inbox for the checklist.");
         setEmail("");
-        // Redirect to thank-you after short delay if desired
-        window.location.href = "/thank-you/";
+        window.location.href = `${BASE}/thank-you/`;
       } else {
         setStatus("error");
         setMessage("Something went wrong. Please try again or download the checklist directly.");
@@ -73,7 +74,6 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="bg-hero-pattern section-padding">
         <div className="max-w-4xl mx-auto container-padding text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-bitcoin-orange text-white rounded-full text-3xl font-bold mb-6">
@@ -107,7 +107,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Checklist preview + signup */}
       <section id="checklist" className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto container-padding">
           <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -143,10 +142,7 @@ export default function Home() {
                 </li>
               </ul>
 
-              <Link
-                href="/checklist/"
-                className="text-bitcoin-orange font-semibold hover:underline"
-              >
+              <Link href="/checklist/" className="text-bitcoin-orange font-semibold hover:underline">
                 Read the full checklist on the web →
               </Link>
             </div>
@@ -205,15 +201,12 @@ export default function Home() {
 
               <div className="mt-5 pt-5 border-t border-gray-100">
                 <p className="text-sm text-gray-600 mb-2">Prefer not to email?</p>
-                <Link
-                  href="/checklist/"
-                  className="text-bitcoin-orange font-medium hover:underline text-sm"
-                >
+                <Link href="/checklist/" className="text-bitcoin-orange font-medium hover:underline text-sm">
                   View the checklist online
                 </Link>
                 {" · "}
                 <a
-                  href="/Bitcoin-Beginner-Checklist.pdf"
+                  href={`${BASE}/Bitcoin-Beginner-Checklist.pdf`}
                   className="text-bitcoin-orange font-medium hover:underline text-sm"
                   download
                 >
@@ -225,7 +218,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits */}
       <section className="py-16 md:py-20">
         <div className="max-w-5xl mx-auto container-padding">
           <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-10">
@@ -233,10 +225,7 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {benefits.map((b) => (
-              <div
-                key={b.title}
-                className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
-              >
+              <div key={b.title} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                 <h3 className="font-bold text-lg text-black mb-2">{b.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{b.body}</p>
               </div>
@@ -245,7 +234,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Who it's for */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto container-padding text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Who this is for</h2>
@@ -260,7 +248,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About */}
       <section className="py-16">
         <div className="max-w-3xl mx-auto container-padding text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">About Satoshi’s Path</h2>
@@ -272,7 +259,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tools teaser */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-5xl mx-auto container-padding">
           <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-4">
@@ -312,14 +298,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Toolkit preview */}
       <section className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto container-padding">
           <div className="bg-linear-to-br from-gray-900 to-black text-white rounded-2xl p-8 md:p-10">
             <p className="text-bitcoin-orange font-semibold text-sm mb-2">Optional paid tool · $17</p>
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              Bitcoin Starter Toolkit
-            </h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Bitcoin Starter Toolkit</h2>
             <p className="text-gray-300 mb-6 max-w-xl">
               A practical multi-tab spreadsheet: track purchases and fees, see your average cost,
               inventory your wallets, and keep a simple monthly plan. Built for ordinary budgets.
@@ -339,7 +322,7 @@ export default function Home() {
                 See the toolkit
               </Link>
               <a
-                href="/Satoshi-Path-Bitcoin-Starter-Toolkit-PREVIEW.xlsx"
+                href={`${BASE}/Satoshi-Path-Bitcoin-Starter-Toolkit-PREVIEW.xlsx`}
                 className="inline-block border border-gray-500 text-gray-200 px-6 py-3 rounded-xl font-semibold hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors text-center"
                 download
               >
@@ -350,7 +333,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto container-padding">
           <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-10">FAQ</h2>
@@ -396,7 +378,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
       <section className="py-16 bg-black text-center">
         <div className="max-w-2xl mx-auto container-padding">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">

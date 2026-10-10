@@ -25,36 +25,42 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-bitcoin-orange after:transition-all after:duration-300 hover:after:w-full"
+              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
             >
               Home
             </Link>
             <Link
-              href="/personal-strategy"
-              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-bitcoin-orange after:transition-all after:duration-300 hover:after:w-full"
+              href="/checklist/"
+              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
             >
-              My Strategy
+              Checklist
             </Link>
             <Link
-              href="/tools"
-              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-bitcoin-orange after:transition-all after:duration-300 hover:after:w-full"
+              href="/tools/"
+              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
             >
               Tools
             </Link>
             <Link
-              href="/about"
-              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-bitcoin-orange after:transition-all after:duration-300 hover:after:w-full"
+              href="/tracker/"
+              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
+            >
+              Tracker
+            </Link>
+            <Link
+              href="/about/"
+              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
             >
               About
             </Link>
             <Link
-              href="/personal-strategy"
-              className="bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 transform hover:-translate-y-1 hover:scale-105"
+              href="/#checklist"
+              className="bg-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:bg-orange-600 transition-colors shadow-md"
             >
-              My Strategy
+              Free checklist
             </Link>
           </div>
 
@@ -63,6 +69,7 @@ export default function Navbar() {
             <button
               onClick={toggleMenu}
               className="text-gray-700 hover:text-bitcoin-orange focus:outline-none focus:text-bitcoin-orange transition-colors"
+              aria-label="Toggle menu"
             >
               <svg
                 className="h-6 w-6"
@@ -95,32 +102,39 @@ export default function Navbar() {
                 Home
               </Link>
               <Link
-                href="/personal-strategy"
+                href="/checklist/"
                 className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                My Strategy
+                Checklist
               </Link>
               <Link
-                href="/tools"
+                href="/tools/"
                 className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tools
               </Link>
               <Link
-                href="/about"
+                href="/tracker/"
+                className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Tracker
+              </Link>
+              <Link
+                href="/about/"
                 className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link
-                href="/personal-strategy"
-                className="block bg-linear-to-r from-orange-500 to-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:from-orange-600 hover:to-orange-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-bitcoin-orange/25 mt-4"
+                href="/#checklist"
+                className="block bg-bitcoin-orange text-white px-4 py-2 rounded-xl font-medium hover:bg-orange-600 transition-colors mt-3 text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                My Strategy
+                Free checklist
               </Link>
             </div>
           </div>

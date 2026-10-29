@@ -26,10 +26,15 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image", title, description, images: [OG_IMAGE] },
   icons: {
-    icon: `${ASSET_BASE}/bitcoin-icon.svg`,
-    shortcut: `${ASSET_BASE}/bitcoin-icon.svg`,
-    apple: `${ASSET_BASE}/bitcoin-icon.svg`,
+    icon: [
+      { url: `${ASSET_BASE}/favicon.ico`, sizes: "any" },
+      { url: `${ASSET_BASE}/bitcoin-icon.svg`, type: "image/svg+xml" },
+      { url: `${ASSET_BASE}/icon-32.png`, sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: `${ASSET_BASE}/favicon.ico`,
+    apple: [{ url: `${ASSET_BASE}/apple-touch-icon.png`, sizes: "180x180" }],
   },
+  manifest: `${ASSET_BASE}/site.webmanifest`,
 };
 
 export const viewport: Viewport = { themeColor: "#f7931a", width: "device-width", initialScale: 1 };

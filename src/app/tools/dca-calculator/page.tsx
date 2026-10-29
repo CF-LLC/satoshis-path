@@ -1,9 +1,12 @@
+import { pageMeta } from "@/config/meta";
+import type { Metadata } from "next";
+import { abs, OG_IMAGE } from "@/config/site";
+import ToolkitCTA from "@/components/ToolkitCTA";
+import EmailSignup from "@/components/EmailSignup";
+import Link from "next/link";
 import DCACalculator from '@/components/DCACalculator';
 
-export const metadata = {
-  title: 'Bitcoin DCA Calculator | Satoshi\'s Path',
-  description: 'Calculate your Bitcoin dollar-cost averaging performance with real historical data. See how much Bitcoin you would have accumulated and your current profit/loss.',
-};
+export const metadata = pageMeta("/tools/dca-calculator/", "Bitcoin DCA Calculator: See What Regular Buys Look Like | Satoshi's Path", "Free Bitcoin dollar-cost averaging calculator. Model regular small purchases over time and see how average cost works. Educational, not a prediction.");
 
 export default function DCACalculatorPage() {
   return (
@@ -16,8 +19,7 @@ export default function DCACalculatorPage() {
               Bitcoin <span className="bg-linear-to-r from-orange-600 to-bitcoin-orange bg-clip-text text-transparent">DCA Calculator</span>
             </h1>
             <p className="text-xl text-gray-600">
-              Discover how dollar-cost averaging into Bitcoin would have performed over any time period. 
-              See your potential returns with real historical data.
+              See how regular, fixed-dollar purchases average out over time. Educational only: past results never predict future ones.
             </p>
           </div>
         </div>
@@ -27,6 +29,24 @@ export default function DCACalculatorPage() {
       <section className="section-padding">
         <div className="max-w-4xl mx-auto container-padding">
           <DCACalculator />
+        </div>
+      </section>
+
+      <section className="pb-12 md:pb-16">
+        <div className="max-w-4xl mx-auto container-padding space-y-6">
+          <ToolkitCTA context="your DCA purchases" />
+          <div className="grid md:grid-cols-2 gap-6 items-start">
+            <EmailSignup source="tool-dca-calculator" />
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <p className="font-bold text-black mb-2">Related guides</p>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/guides/buy-bitcoin-without-overpaying-fees/" className="text-bitcoin-orange hover:underline">Buy Bitcoin without overpaying fees</Link></li>
+                <li><Link href="/guides/what-is-dollar-cost-averaging/" className="text-bitcoin-orange hover:underline">Dollar-cost averaging, explained without hype</Link></li>
+                <li><Link href="/guides/move-bitcoin-to-a-wallet-safely/" className="text-bitcoin-orange hover:underline">Move Bitcoin to your own wallet safely</Link></li>
+                <li><Link href="/checklist/" className="text-bitcoin-orange hover:underline">Free beginner checklist</Link></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 

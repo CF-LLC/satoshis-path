@@ -1,11 +1,12 @@
+import { pageMeta } from "@/config/meta";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { abs, TOOLKIT_CHECKOUT_URL } from "@/config/site";
+import ToolkitPreview from "@/components/ToolkitPreview";
+import EmailSignup from "@/components/EmailSignup";
+import { BuyToolkitButton } from "@/components/ToolkitCTA";
 
-export const metadata: Metadata = {
-  title: "Bitcoin Starter Toolkit — $17 | Satoshi's Path",
-  description:
-    "A practical multi-tab spreadsheet for beginners: track purchases, fees, wallets, and a simple stacking plan. Average cost calculated for you. Not tax software.",
-};
+export const metadata = pageMeta("/tracker/", "Bitcoin Starter Toolkit — $17 | Satoshi's Path", "A practical multi-tab spreadsheet for beginners: track purchases, fees, wallets, and a simple stacking plan. Average cost calculated for you. Not tax software.");
 
 export default function TrackerPage() {
   return (
@@ -30,18 +31,15 @@ export default function TrackerPage() {
               <p className="text-sm text-gray-500">One-time · .xlsx · Excel & Google Sheets</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <span
-                className="inline-block bg-gray-300 text-gray-600 px-6 py-3 rounded-xl font-semibold text-center cursor-not-allowed"
-                title="Checkout not connected yet"
-              >
-                Buy — setup required
-              </span>
-              <a
-                href="/Satoshi-Path-Bitcoin-Starter-Toolkit-PREVIEW.xlsx"
-                download
-                className="inline-block border-2 border-bitcoin-orange text-bitcoin-orange px-6 py-3 rounded-xl font-semibold hover:bg-bitcoin-orange hover:text-white transition-colors text-center"
-              >
-                Free preview
+              {TOOLKIT_CHECKOUT_URL ? (
+                <BuyToolkitButton />
+              ) : (
+                <span className="inline-block bg-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold text-center cursor-not-allowed" title="Checkout not connected yet">
+                  Checkout opening soon
+                </span>
+              )}
+              <a href="#preview" className="inline-block border-2 border-bitcoin-orange text-black px-6 py-3 rounded-xl font-semibold hover:bg-bitcoin-orange transition-colors text-center">
+                See the preview
               </a>
             </div>
           </div>
@@ -50,6 +48,17 @@ export default function TrackerPage() {
             the buy button will process payment and deliver the full file automatically.
           </p>
         </div>
+
+        <div id="preview" className="scroll-mt-24 mb-10">
+          <h2 className="text-xl font-bold text-black mb-3">Dashboard preview</h2>
+          <ToolkitPreview />
+        </div>
+
+        {!TOOLKIT_CHECKOUT_URL && (
+          <div className="mb-10">
+            <EmailSignup source="toolkit-waitlist" title="Get the checklist now, and hear when checkout opens" blurb="Join the list for the free checklist and the welcome series. We'll mention the toolkit once checkout is live." />
+          </div>
+        )}
 
         <h2 className="text-xl font-bold text-black mb-3">Why this exists</h2>
         <p className="text-gray-600 text-sm mb-8 leading-relaxed">
@@ -164,12 +173,8 @@ export default function TrackerPage() {
         </div>
 
         <div className="flex flex-wrap gap-4">
-          <a
-            href="/Satoshi-Path-Bitcoin-Starter-Toolkit-PREVIEW.xlsx"
-            download
-            className="text-bitcoin-orange font-semibold hover:underline"
-          >
-            Download free preview →
+          <a href="#preview" className="text-bitcoin-orange font-semibold hover:underline">
+            See the preview ↑
           </a>
           <Link href="/" className="text-gray-500 hover:text-bitcoin-orange transition-colors">
             ← Back to home

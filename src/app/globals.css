@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Brand tokens for Tailwind v4 utilities (bg-bitcoin-orange, text-bitcoin-orange, etc.) */
+@theme {
+  --color-bitcoin-orange: #f7931a;
+  --color-bitcoin-light: #f8a01d;
+  --color-bitcoin-dark: #e8821a;
+  --font-sans: 'Fira Sans', ui-sans-serif, system-ui, sans-serif;
+  --shadow-bitcoin: 0 4px 14px 0 rgba(247, 147, 26, 0.25);
+}
+
 :root {
   --background: #ffffff;
   --background-secondary: #fafafa;

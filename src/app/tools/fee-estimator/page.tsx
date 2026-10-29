@@ -1,9 +1,12 @@
+import { pageMeta } from "@/config/meta";
+import type { Metadata } from "next";
+import { abs, OG_IMAGE } from "@/config/site";
+import ToolkitCTA from "@/components/ToolkitCTA";
+import EmailSignup from "@/components/EmailSignup";
+import Link from "next/link";
 import FeeEstimator from '@/components/FeeEstimator';
 
-export const metadata = {
-  title: 'Bitcoin Fee Estimator | Satoshi\'s Path',
-  description: 'Get real-time Bitcoin transaction fee estimates for different priority levels. Calculate fees based on current mempool conditions.',
-};
+export const metadata = pageMeta("/tools/fee-estimator/", "Bitcoin Fee Estimator: Check Network Fees Before You Send | Satoshi's Path", "Free Bitcoin network fee estimator. See current fee levels by priority before you withdraw or send. No account needed.");
 
 export default function FeeEstimatorPage() {
   return (
@@ -27,6 +30,24 @@ export default function FeeEstimatorPage() {
       <section className="section-padding">
         <div className="max-w-5xl mx-auto container-padding">
           <FeeEstimator />
+        </div>
+      </section>
+
+      <section className="pb-12 md:pb-16">
+        <div className="max-w-4xl mx-auto container-padding space-y-6">
+          <ToolkitCTA context="withdrawal and network fees" />
+          <div className="grid md:grid-cols-2 gap-6 items-start">
+            <EmailSignup source="tool-fee-estimator" />
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <p className="font-bold text-black mb-2">Related guides</p>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/guides/buy-bitcoin-without-overpaying-fees/" className="text-bitcoin-orange hover:underline">Buy Bitcoin without overpaying fees</Link></li>
+                <li><Link href="/guides/what-is-dollar-cost-averaging/" className="text-bitcoin-orange hover:underline">Dollar-cost averaging, explained without hype</Link></li>
+                <li><Link href="/guides/move-bitcoin-to-a-wallet-safely/" className="text-bitcoin-orange hover:underline">Move Bitcoin to your own wallet safely</Link></li>
+                <li><Link href="/checklist/" className="text-bitcoin-orange hover:underline">Free beginner checklist</Link></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 

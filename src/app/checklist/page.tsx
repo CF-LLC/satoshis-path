@@ -1,11 +1,10 @@
+import { pageMeta } from "@/config/meta";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { abs } from "@/config/site";
+import ToolkitCTA from "@/components/ToolkitCTA";
 
-export const metadata: Metadata = {
-  title: "Bitcoin Beginner Checklist: Fees, Wallets & Common Mistakes | Satoshi's Path",
-  description:
-    "A practical beginner checklist covering Bitcoin fees, wallets, recovery phrases, scam warning signs, and how to record purchases. Free educational resource.",
-};
+export const metadata = pageMeta("/checklist/", "Bitcoin Beginner Checklist: Fees, Wallets & Common Mistakes | Satoshi's Path", "A practical beginner checklist covering Bitcoin fees, wallets, recovery phrases, scam warning signs, and how to record purchases. Free educational resource.");
 
 export default function ChecklistPage() {
   return (
@@ -20,13 +19,6 @@ export default function ChecklistPage() {
         </p>
 
         <div className="flex flex-wrap gap-3 mb-10">
-          <a
-            href="/Bitcoin-Beginner-Checklist.pdf"
-            download
-            className="bg-bitcoin-orange text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-orange-600 transition-colors"
-          >
-            Download PDF
-          </a>
           <Link
             href="/#checklist"
             className="border border-gray-300 text-gray-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors"
@@ -165,13 +157,18 @@ export default function ChecklistPage() {
           </section>
         </div>
 
-        <div className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
+        <div className="mt-12"><ToolkitCTA context="your purchases and fees" /></div>
+
+        <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
           <h3 className="font-bold text-black mb-2">Next step</h3>
           <p className="text-gray-600 text-sm mb-4">
             Review the fees and security sections above. When you’re ready, explore the free tools
             or the optional Bitcoin Starter Toolkit.
           </p>
           <div className="flex flex-wrap gap-3">
+            <Link href="/guides/" className="text-bitcoin-orange font-semibold text-sm hover:underline">
+              Plain-English guides →
+            </Link>
             <Link href="/tools/" className="text-bitcoin-orange font-semibold text-sm hover:underline">
               Free tools →
             </Link>

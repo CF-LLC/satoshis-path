@@ -106,3 +106,16 @@ This site contains referral links that may provide us with a commission. We only
 ## License
 
 MIT License - see LICENSE file for details.
+
+## Site config (custom domain, checkout, email, analytics)
+
+Everything is driven by `src/config/site.ts` (or build-time env vars):
+
+| Setting | Env var | Default |
+|---|---|---|
+| Public URL (canonical, sitemap, OG, basePath) | `NEXT_PUBLIC_SITE_URL` | `https://cf-llc.github.io/satoshis-path` |
+| $17 toolkit checkout link | `NEXT_PUBLIC_TOOLKIT_CHECKOUT_URL` | empty (button goes to /tracker/) |
+| Email signup endpoint (public form URL only) | `NEXT_PUBLIC_FORM_ENDPOINT` | empty (form shows "not connected") |
+| Cookieless analytics (GoatCounter code) | `NEXT_PUBLIC_GOATCOUNTER_CODE` | empty (disabled) |
+
+Moving to a custom domain: set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` in the deploy workflow, copy `deploy/CNAME.example` (edited) to `public/CNAME`, and add the DNS records GitHub Pages lists.

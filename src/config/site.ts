@@ -21,11 +21,11 @@ export const SITE_NAME = "Satoshi's Path";
 export const OWNER = "Cooper Featherstone LLC";
 export const CONTACT_EMAIL = "satoshispath@gmail.com";
 
-/** Toolkit checkout URL. Empty = no live checkout exists yet (button links to the toolkit page). */
-export const TOOLKIT_CHECKOUT_URL = process.env.NEXT_PUBLIC_TOOLKIT_CHECKOUT_URL || "";
+/** Toolkit checkout: Stripe Payment Link (CF LLC). After payment Stripe redirects to sp-api.spockshop.com/success, which serves the file (Cloudflare Worker satoshis-path-delivery). */
+export const TOOLKIT_CHECKOUT_URL = process.env.NEXT_PUBLIC_TOOLKIT_CHECKOUT_URL || "https://buy.stripe.com/9B614n7wo4G5c6mbob4c80S";
 
-/** Public form endpoint for email signup (Formspree/Buttondown/ConvertKit). Empty = not connected. */
-export const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || "";
+/** Email signup endpoint (Cloudflare Worker satoshis-path-delivery): stores the address and emails the free checklist with an unsubscribe link. */
+export const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || "https://sp-api.spockshop.com/subscribe";
 
 /** Optional cookieless analytics (GoatCounter code, e.g. "satoshispath"). Empty = disabled. */
 export const GOATCOUNTER_CODE = process.env.NEXT_PUBLIC_GOATCOUNTER_CODE || "";

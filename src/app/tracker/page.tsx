@@ -44,8 +44,8 @@ export default function TrackerPage() {
             </div>
           </div>
           <p className="text-xs text-gray-500 mt-4">
-            Checkout is not live yet. Once payment is connected (Gumroad, Lemon Squeezy, or Stripe),
-            the buy button will process payment and deliver the full file automatically.
+            Secure checkout by Stripe. Your download appears right after payment and is also emailed
+            to you. Not tax software or advice.
           </p>
         </div>
 

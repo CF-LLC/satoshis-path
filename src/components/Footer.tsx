@@ -137,6 +137,16 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/guides/" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
+                  Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/recommendations/" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
+                  Recommendations
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-gray-400 hover:text-bitcoin-orange transition-colors">
                   About
                 </Link>
@@ -368,7 +378,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-8 text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Satoshi's Path. Not financial advice. 
+            © {new Date().getFullYear()} Satoshi's Path · Run by Cooper Featherstone LLC. Not financial advice. 
             Always do your own research.
           </p>
         </div>

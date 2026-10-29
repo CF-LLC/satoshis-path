@@ -1,13 +1,14 @@
 import type { NextConfig } from "next";
+import { BASE_PATH } from "./src/config/site";
+
+const prod = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: "export",
   trailingSlash: true,
-  images: {
-    unoptimized: true,
-  },
-  basePath: process.env.NODE_ENV === 'production' ? '/satoshis-path' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/satoshis-path/' : '',
+  images: { unoptimized: true },
+  basePath: prod ? BASE_PATH : "",
+  assetPrefix: prod && BASE_PATH ? `${BASE_PATH}/` : undefined,
 };
 
 export default nextConfig;

@@ -1,400 +1,203 @@
-'use client';
-
 import Link from "next/link";
-import { useState } from "react";
+import type { Metadata } from "next";
+import { pageMeta } from "@/config/meta";
+import { OWNER } from "@/config/site";
+import { guides } from "@/content/guides";
+import EmailSignup from "@/components/EmailSignup";
+import { BuyToolkitButton } from "@/components/ToolkitCTA";
+import ToolkitPreview from "@/components/ToolkitPreview";
+import ChecklistSamples from "@/components/ChecklistSamples";
+import WelcomeSeries from "@/components/WelcomeSeries";
 
-// Matches next.config.ts basePath for static GitHub Pages export
-const BASE = process.env.NODE_ENV === "production" ? "/satoshis-path" : "";
+export const metadata: Metadata = pageMeta(
+  "/",
+  "Satoshi's Path — Bitcoin basics for ordinary budgets",
+  "Understand Bitcoin fees, wallets, and common mistakes. Free beginner checklist, plain-English guides and practical tools. Educational only — not financial advice."
+);
+
+const tools = [
+  { href: "/tools/dca-calculator/", t: "DCA Calculator", d: "See what regular small purchases might have looked like.", e: "📅" },
+  { href: "/tools/fee-estimator/", t: "Fee Estimator", d: "Check current network fees before you send.", e: "⛽" },
+  { href: "/tools/unit-converter/", t: "Unit Converter", d: "Convert between BTC, sats and dollars.", e: "🔁" },
+];
+
+const faq = [
+  ["Is the checklist really free?", "Yes. Read it on the web without buying anything. Email signup is optional."],
+  ["What is the $17 Bitcoin Starter Toolkit?", "A multi-tab spreadsheet for tracking purchases, fees, wallets and a simple monthly plan. It calculates totals and average cost and keeps rewards and transfers separate. It isn't tax software or personalized advice."],
+  ["Do you earn money from recommendations?", "Some links on this site may be affiliate or referral links. If so, Cooper Featherstone LLC may earn a commission. Disclosures appear near recommendations."],
+  ["Is this financial advice?", "No. Everything here is educational. Bitcoin can lose value. Decisions about your money are yours."],
+];
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [message, setMessage] = useState("");
-
-  // Formspree / ConvertKit-ready handler.
-  // Replace FORM_ENDPOINT with your provider endpoint after you create the form.
-  // Never put private API keys in frontend code.
-  const FORM_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxxxxx"
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes("@")) {
-      setStatus("error");
-      setMessage("Please enter a valid email address.");
-      return;
-    }
-
-    if (!FORM_ENDPOINT) {
-      setStatus("error");
-      setMessage(
-        "Email signup is not connected yet. You can still view and download the checklist below."
-      );
-      return;
-    }
-
-    setStatus("loading");
-    setMessage("");
-
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setMessage("You're on the list. Check your inbox for the checklist.");
-        setEmail("");
-        window.location.href = `${BASE}/thank-you/`;
-      } else {
-        setStatus("error");
-        setMessage("Something went wrong. Please try again or download the checklist directly.");
-      }
-    } catch {
-      setStatus("error");
-      setMessage("Network error. You can still download the checklist on the thank-you page.");
-    }
-  };
-
-  const benefits = [
-    {
-      title: "Understand real costs",
-      body: "See how spreads, purchase fees, and withdrawal fees affect what you actually receive.",
-    },
-    {
-      title: "Avoid common mistakes",
-      body: "Learn the recovery-phrase rules, address checks, and scam warning signs before you need them.",
-    },
-    {
-      title: "Track what you buy",
-      body: "A simple way to record purchases and fees so you know your average cost over time.",
-    },
-  ];
-
   return (
     <div className="bg-white">
-      <section className="bg-hero-pattern section-padding">
-        <div className="max-w-4xl mx-auto container-padding text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-bitcoin-orange text-white rounded-full text-3xl font-bold mb-6">
-            ₿
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-hero-pattern">
+        <div aria-hidden className="pointer-events-none absolute -top-32 -right-32 h-96 w-96 rounded-full bg-bitcoin-orange/15 blur-3xl" />
+        <div className="relative max-w-6xl mx-auto container-padding py-14 md:py-20 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-orange-50 border border-orange-200 px-3 py-1 text-xs font-semibold text-orange-800 mb-5">
+              ₿ Bitcoin basics for ordinary budgets
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold text-black mb-5 leading-[1.05] text-balance">
+              Make sense of Bitcoin, <span className="text-bitcoin-orange">one sat at a time.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-xl">
+              Understand fees, wallets and common mistakes before they cost you. Start with the free checklist; keep your records in the toolkit.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mb-4">
+              <a href="#checklist" className="inline-flex items-center justify-center bg-bitcoin-orange text-black px-6 py-3.5 rounded-xl text-base font-semibold hover:bg-orange-400 transition-colors shadow-lg shadow-bitcoin-orange/30">
+                Free beginner checklist
+              </a>
+              <BuyToolkitButton />
+            </div>
+            <p className="text-sm text-gray-500">No hype. No price predictions. Run by {OWNER}.</p>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-5 leading-tight text-balance">
-            Make sense of Bitcoin,{" "}
-            <span className="text-bitcoin-orange">one sat at a time.</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Understand fees, wallets, and common mistakes with a practical beginner checklist.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-            <a
-              href="#checklist"
-              className="bg-bitcoin-orange text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg"
-            >
-              Get the free beginner checklist
-            </a>
-            <Link
-              href="/tools/"
-              className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors"
-            >
-              Explore Bitcoin basics
-            </Link>
+          <div className="lg:pl-4">
+            <ToolkitPreview />
           </div>
-          <p className="text-sm text-gray-500">
-            No hype. No price predictions. Just clear explanations.
-          </p>
         </div>
       </section>
 
-      <section id="checklist" className="py-16 md:py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto container-padding">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
+      {/* TRUST STRIP */}
+      <section className="border-y border-gray-100 bg-white">
+        <div className="max-w-6xl mx-auto container-padding py-5 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm text-gray-600">
+          <p><strong className="block text-black">9-section</strong> beginner checklist</p>
+          <p><strong className="block text-black">{guides.length}</strong> plain-English guides</p>
+          <p><strong className="block text-black">No account</strong> needed for tools</p>
+          <p><strong className="block text-black">Disclosed</strong> recommendations</p>
+        </div>
+      </section>
+
+      {/* CHECKLIST + SIGNUP */}
+      <section id="checklist" className="py-16 md:py-20 bg-gray-50 scroll-mt-20">
+        <div className="max-w-6xl mx-auto container-padding">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-start">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
-                Free: Bitcoin Beginner Checklist
-              </h2>
-              <p className="text-gray-600 mb-6">
-                A concise guide covering fees, wallets, recovery phrases, scam warning signs, and how
-                to record what you buy. Useful whether or not you ever purchase Bitcoin.
+              <p className="text-bitcoin-orange font-semibold text-sm mb-2">Free</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">Bitcoin Beginner Checklist</h2>
+              <p className="text-gray-600 mb-8 max-w-xl">
+                Fees, wallets, recovery phrases, scam warning signs and simple record-keeping. Useful whether or not you ever buy. Here&apos;s what a few pages look like:
               </p>
-
-              <ul className="space-y-3 mb-8 text-gray-700">
-                <li className="flex gap-2">
-                  <span className="text-bitcoin-orange font-bold">✓</span>
-                  Bitcoin & satoshis explained simply
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-bitcoin-orange font-bold">✓</span>
-                  Purchase fees, spreads, and withdrawal costs
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-bitcoin-orange font-bold">✓</span>
-                  Exchange accounts vs. self-custody wallets
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-bitcoin-orange font-bold">✓</span>
-                  Recovery phrase security & common scams
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-bitcoin-orange font-bold">✓</span>
-                  How to record purchases without double-counting fees
-                </li>
-              </ul>
-
-              <Link href="/checklist/" className="text-bitcoin-orange font-semibold hover:underline">
-                Read the full checklist on the web →
-              </Link>
+              <ChecklistSamples />
             </div>
-
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8">
-              <h3 className="text-xl font-bold text-black mb-2">Get it by email</h3>
-              <p className="text-gray-600 text-sm mb-5">
-                Enter your email and we’ll send the checklist plus a short series of practical
-                beginner emails. Unsubscribe anytime.
+            <div className="lg:sticky lg:top-24 space-y-4">
+              <EmailSignup source="home-hero" />
+              <p className="text-sm text-gray-600 text-center">
+                Prefer not to email? <Link href="/checklist/" className="text-bitcoin-orange font-semibold hover:underline">Read it online</Link>
               </p>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email address
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-bitcoin-orange focus:border-bitcoin-orange text-base"
-                    disabled={status === "loading"}
-                  />
-                </div>
-
-                <p className="text-xs text-gray-500">
-                  By submitting you agree to receive the checklist and related beginner emails from
-                  Satoshi’s Path (Cooper Featherstone LLC). We do not sell your email. You can
-                  unsubscribe in every message.
-                </p>
-
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="w-full bg-bitcoin-orange text-white py-3.5 rounded-xl font-semibold hover:bg-orange-600 transition-colors disabled:opacity-60"
-                >
-                  {status === "loading" ? "Sending…" : "Send me the free checklist"}
-                </button>
-
-                {message && (
-                  <p
-                    className={`text-sm ${
-                      status === "success" ? "text-green-700" : "text-red-600"
-                    }`}
-                    role="status"
-                  >
-                    {message}
-                  </p>
-                )}
-              </form>
-
-              <div className="mt-5 pt-5 border-t border-gray-100">
-                <p className="text-sm text-gray-600 mb-2">Prefer not to email?</p>
-                <Link href="/checklist/" className="text-bitcoin-orange font-medium hover:underline text-sm">
-                  View the checklist online
-                </Link>
-                {" · "}
-                <a
-                  href={`${BASE}/Bitcoin-Beginner-Checklist.pdf`}
-                  className="text-bitcoin-orange font-medium hover:underline text-sm"
-                  download
-                >
-                  Download PDF
-                </a>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* TOOLKIT */}
       <section className="py-16 md:py-20">
-        <div className="max-w-5xl mx-auto container-padding">
-          <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-10">
-            What you’ll get from the checklist
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {benefits.map((b) => (
-              <div key={b.title} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                <h3 className="font-bold text-lg text-black mb-2">{b.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{b.body}</p>
+        <div className="max-w-6xl mx-auto container-padding grid md:grid-cols-2 gap-10 items-center">
+          <div className="order-2 md:order-1 grid grid-cols-3 gap-3">
+            {["Dashboard", "Purchases", "Fee Log", "Rewards", "Transfers", "Wallets", "Plan", "Glossary", "Start Here"].map((t, i) => (
+              <div key={t} className="aspect-square rounded-2xl border border-gray-200 bg-linear-to-br from-white to-orange-50 p-3 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <span className="text-xs font-mono text-bitcoin-orange">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-sm font-semibold text-black">{t}</span>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-3xl mx-auto container-padding text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Who this is for</h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Ordinary people with ordinary budgets who want to understand Bitcoin before (or instead
-            of) buying. If you’ve felt overwhelmed by jargon, conflicting advice, or pressure to
-            “get in now,” this path is built for you.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            We do not promise profits, passive income, or that Bitcoin is right for everyone.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-3xl mx-auto container-padding text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">About Satoshi’s Path</h2>
-          <p className="text-gray-600 leading-relaxed">
-            Satoshi’s Path is an educational project operated by Cooper Featherstone LLC. The goal
-            is simple: help beginners make sense of Bitcoin — fees, wallets, common mistakes, and
-            basic record-keeping — without hype or hard sells.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto container-padding">
-          <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-4">
-            Free tools to explore
-          </h2>
-          <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
-            Calculators and helpers that stay useful even if you never buy. No account required.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            <Link
-              href="/tools/dca-calculator/"
-              className="block bg-white border border-gray-200 rounded-xl p-5 hover:border-bitcoin-orange transition-colors"
-            >
-              <h3 className="font-bold text-black mb-1">DCA Calculator</h3>
-              <p className="text-sm text-gray-600">See what regular purchases might have looked like historically.</p>
-            </Link>
-            <Link
-              href="/tools/fee-estimator/"
-              className="block bg-white border border-gray-200 rounded-xl p-5 hover:border-bitcoin-orange transition-colors"
-            >
-              <h3 className="font-bold text-black mb-1">Fee Estimator</h3>
-              <p className="text-sm text-gray-600">Get a sense of current network fees before you send.</p>
-            </Link>
-            <Link
-              href="/tools/unit-converter/"
-              className="block bg-white border border-gray-200 rounded-xl p-5 hover:border-bitcoin-orange transition-colors"
-            >
-              <h3 className="font-bold text-black mb-1">Unit Converter</h3>
-              <p className="text-sm text-gray-600">Convert between BTC, sats, and dollars.</p>
-            </Link>
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/tools/" className="text-bitcoin-orange font-semibold hover:underline">
-              View all tools →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20">
-        <div className="max-w-4xl mx-auto container-padding">
-          <div className="bg-linear-to-br from-gray-900 to-black text-white rounded-2xl p-8 md:p-10">
-            <p className="text-bitcoin-orange font-semibold text-sm mb-2">Optional paid tool · $17</p>
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Bitcoin Starter Toolkit</h2>
-            <p className="text-gray-300 mb-6 max-w-xl">
-              A practical multi-tab spreadsheet: track purchases and fees, see your average cost,
-              inventory your wallets, and keep a simple monthly plan. Built for ordinary budgets.
-              Not tax software.
-            </p>
-            <ul className="text-gray-300 text-sm space-y-2 mb-8">
-              <li>• Dashboard with live totals and average cost</li>
-              <li>• Purchase + Fee Log (spot the real cost of spreads)</li>
-              <li>• Wallet inventory and recovery-phrase checklist</li>
-              <li>• Simple stacking plan you will actually keep</li>
+          <div className="order-1 md:order-2">
+            <p className="text-bitcoin-orange font-semibold text-sm mb-2">Optional · $17 one-time</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">Bitcoin Starter Toolkit</h2>
+            <ul className="space-y-2 text-gray-700 mb-7">
+              {["Dashboard with totals and real average cost", "Purchase and fee logs that never double-count", "Rewards and transfers kept separate", "Wallet inventory and a simple monthly plan", "Excel, Google Sheets and LibreOffice"].map((t) => (
+                <li key={t} className="flex gap-2"><span aria-hidden className="text-bitcoin-orange font-bold">✓</span>{t}</li>
+              ))}
             </ul>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/tracker/"
-                className="inline-block bg-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-600 transition-colors text-center"
-              >
-                See the toolkit
+            <div className="flex flex-col sm:flex-row gap-3">
+              <BuyToolkitButton />
+              <Link href="/tracker/#preview" className="inline-flex justify-center px-6 py-3.5 rounded-xl border-2 border-gray-200 font-semibold text-gray-700 hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors">See all 9 tabs</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GUIDES */}
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto container-padding">
+          <div className="flex items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-bitcoin-orange font-semibold text-sm mb-1">Guides</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-black">Read before you buy</h2>
+            </div>
+            <Link href="/guides/" className="hidden sm:inline text-bitcoin-orange font-semibold hover:underline">All guides →</Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {guides.map((g) => (
+              <Link key={g.slug} href={`/guides/${g.slug}/`} className="group bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-xl hover:-translate-y-1 hover:border-bitcoin-orange/60 transition-all duration-300">
+                <span aria-hidden className="text-2xl">{g.emoji}</span>
+                <h3 className="font-bold text-black mt-2 mb-1 group-hover:text-bitcoin-orange transition-colors">{g.title}</h3>
+                <p className="text-xs text-gray-500">{g.minutes} min read</p>
               </Link>
-              <a
-                href={`${BASE}/Satoshi-Path-Bitcoin-Starter-Toolkit-PREVIEW.xlsx`}
-                className="inline-block border border-gray-500 text-gray-200 px-6 py-3 rounded-xl font-semibold hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors text-center"
-                download
-              >
-                Download free preview
-              </a>
-            </div>
+            ))}
           </div>
+          <Link href="/guides/" className="sm:hidden block mt-6 text-center text-bitcoin-orange font-semibold">All guides →</Link>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-3xl mx-auto container-padding">
-          <h2 className="text-2xl md:text-3xl font-bold text-black text-center mb-10">FAQ</h2>
+      {/* TOOLS */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-6xl mx-auto container-padding">
+          <h2 className="text-3xl md:text-4xl font-bold text-black text-center mb-3">Free tools</h2>
+          <p className="text-gray-600 text-center mb-10">No account required.</p>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {tools.map((t) => (
+              <Link key={t.href} href={t.href} className="group rounded-2xl border border-gray-200 p-6 hover:border-bitcoin-orange hover:shadow-lg transition-all">
+                <span aria-hidden className="text-2xl">{t.e}</span>
+                <h3 className="font-bold text-black mt-2 mb-1 group-hover:text-bitcoin-orange">{t.t}</h3>
+                <p className="text-sm text-gray-600">{t.d}</p>
+              </Link>
+            ))}
+          </div>
+          <p className="text-center mt-8"><Link href="/tools/" className="text-bitcoin-orange font-semibold hover:underline">View all tools →</Link></p>
+        </div>
+      </section>
+
+      {/* WELCOME SERIES + WHO */}
+      <section className="py-16 md:py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto container-padding grid md:grid-cols-2 gap-12">
+          <div>
+            <p className="text-bitcoin-orange font-semibold text-sm mb-1">What you&apos;ll get by email</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">Five short emails over a week</h2>
+            <WelcomeSeries />
+            <p className="text-xs text-gray-500 mt-5">No daily spam. Unsubscribe in any message.</p>
+          </div>
           <div className="space-y-6">
-            <div>
-              <h3 className="font-bold text-black mb-1">Is the checklist really free?</h3>
-              <p className="text-gray-600 text-sm">
-                Yes. You can read it on the web or download the PDF without buying anything. Email
-                signup is optional and gives you the file plus a short educational sequence.
+            <div className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">
+              <h2 className="text-xl font-bold text-black mb-2">Who&apos;s behind this</h2>
+              <p className="text-gray-700">
+                Satoshi&apos;s Path is an independent educational project run by <strong>{OWNER}</strong>. The goal is to help ordinary people understand Bitcoin&apos;s fees, wallets and risks, without hype or hard sells.
               </p>
+              <p className="text-sm text-gray-500 mt-3">Questions? <a href="mailto:satoshispath@gmail.com" className="text-bitcoin-orange hover:underline">satoshispath@gmail.com</a> · <Link href="/about/" className="text-bitcoin-orange hover:underline">About</Link></p>
             </div>
-            <div>
-              <h3 className="font-bold text-black mb-1">What emails will I get?</h3>
-              <p className="text-gray-600 text-sm">
-                A short welcome series (about five emails over a week) covering fees, wallets,
-                security, and tracking. No daily spam. Unsubscribe in any message.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-black mb-1">What is the $17 Bitcoin Starter Toolkit?</h3>
-              <p className="text-gray-600 text-sm">
-                A multi-tab spreadsheet for tracking purchases, fees, wallets, and a simple monthly
-                plan. It calculates totals and average cost, keeps rewards and transfers separate,
-                and includes a beginner glossary. It is not tax software or personalized advice.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-black mb-1">Do you earn money from recommendations?</h3>
-              <p className="text-gray-600 text-sm">
-                Yes. Some links on this site are affiliate or referral links. If you sign up or buy
-                through them, Cooper Featherstone LLC may earn a commission or referral reward. We
-                only list tools that fit the educational focus. Disclosures appear near recommendations.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-bold text-black mb-1">Is this financial advice?</h3>
-              <p className="text-gray-600 text-sm">
-                No. Everything is educational. Bitcoin can lose value. Decisions about money are
-                yours alone.
-              </p>
+            <div className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">
+              <h2 className="text-xl font-bold text-black mb-4">FAQ</h2>
+              <div className="space-y-2">
+                {faq.map(([q, a]) => (
+                  <details key={q} className="group rounded-lg border border-gray-100 p-3 open:bg-orange-50/50">
+                    <summary className="cursor-pointer font-semibold text-black list-none flex justify-between gap-3">{q}<span aria-hidden className="text-bitcoin-orange group-open:rotate-45 transition-transform">+</span></summary>
+                    <p className="text-sm text-gray-600 mt-2">{a}</p>
+                  </details>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-black text-center">
-        <div className="max-w-2xl mx-auto container-padding">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Start with the free checklist
-          </h2>
-          <p className="text-gray-400 mb-8">
-            Clear explanations of fees, wallets, and common mistakes — built for ordinary budgets.
-          </p>
-          <a
-            href="#checklist"
-            className="inline-block bg-bitcoin-orange text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-orange-600 transition-colors"
-          >
-            Get the free beginner checklist
-          </a>
-          <p className="text-sm text-gray-500 mt-6">
-            Not financial advice. Always do your own research.
-          </p>
+      {/* FINAL CTA */}
+      <section className="py-16 md:py-20 bg-black">
+        <div className="max-w-2xl mx-auto container-padding text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Start with the free checklist</h2>
+          <p className="text-gray-400 mb-8">Clear explanations of fees, wallets and common mistakes.</p>
+          <EmailSignup source="home-footer" dark />
+          <p className="text-sm text-gray-500 mt-6">Not financial advice. Bitcoin can lose value.</p>
         </div>
       </section>
     </div>

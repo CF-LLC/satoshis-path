@@ -19,17 +19,16 @@ export default function ThankYouPage() {
         </h1>
         <p className="text-gray-600 mb-8 leading-relaxed">
           If you signed up with email, the checklist is also on its way to your inbox (check spam
-          just in case). You can download or read it right here so you don’t have to wait.
+          just in case). You can read it right here so you don’t have to wait.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <a
-            href="/Bitcoin-Beginner-Checklist.pdf"
-            download
-            className="bg-bitcoin-orange text-white px-6 py-3 rounded-xl font-semibold hover:bg-orange-600 transition-colors"
+          <Link
+            href="/guides/"
+            className="bg-bitcoin-orange text-black px-6 py-3 rounded-xl font-semibold hover:bg-orange-400 transition-colors"
           >
-            Download PDF checklist
-          </a>
+            Browse the guides
+          </Link>
           <Link
             href="/checklist/"
             className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors"

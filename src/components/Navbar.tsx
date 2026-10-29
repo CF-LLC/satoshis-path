@@ -45,10 +45,16 @@ export default function Navbar() {
               Tools
             </Link>
             <Link
+              href="/guides/"
+              className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
+            >
+              Guides
+            </Link>
+            <Link
               href="/tracker/"
               className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors"
             >
-              Tracker
+              Toolkit
             </Link>
             <Link
               href="/about/"
@@ -69,7 +75,7 @@ export default function Navbar() {
             <button
               onClick={toggleMenu}
               className="text-gray-700 hover:text-bitcoin-orange focus:outline-none focus:text-bitcoin-orange transition-colors"
-              aria-label="Toggle menu"
+              aria-label="Toggle menu" aria-expanded={isMenuOpen}
             >
               <svg
                 className="h-6 w-6"
@@ -116,11 +122,18 @@ export default function Navbar() {
                 Tools
               </Link>
               <Link
+                href="/guides/"
+                className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Guides
+              </Link>
+              <Link
                 href="/tracker/"
                 className="block text-gray-700 hover:text-bitcoin-orange font-medium py-2 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Tracker
+                Toolkit
               </Link>
               <Link
                 href="/about/"

@@ -1,0 +1,15 @@
+# Old 2024 Netlify routes -> current pages (Nov 13, 2026)
+/btc-tools          /tools/              301
+/btc-tools/         /tools/              301
+/btc-merch          /merch/              301
+/btc-merch/         /merch/              301
+/earn-sats          /earn/               301
+/earn-sats/         /earn/               301
+/price-calculators  /tools/              301
+/price-calculators/ /tools/              301
+/wallet-analysis    /wallet-analyzer/    301
+/wallet-analysis/   /wallet-analyzer/    301
+/report-problems    /contact/            301
+/report-problems/   /contact/            301
+/request-features   /contact/            301
+/request-features/  /contact/            301

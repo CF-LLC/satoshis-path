@@ -1,0 +1,9 @@
+# Netlify build for https://satoshispath.netlify.app (static export, no basePath).
+# GitHub Pages (cf-llc.github.io/satoshis-path) keeps building from .github/workflows/deploy.yml.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NEXT_PUBLIC_SITE_URL = "https://satoshispath.netlify.app"

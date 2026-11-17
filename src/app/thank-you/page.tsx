@@ -18,8 +18,8 @@ export default function ThankYouPage() {
           You’re in. Here’s your checklist.
         </h1>
         <p className="text-gray-600 mb-8 leading-relaxed">
-          If you signed up with email, the checklist is also on its way to your inbox (check spam
-          just in case). You can read it right here so you don’t have to wait.
+          Your email was saved to the list. We are not sending a welcome series right now.
+          You can read the beginner checklist on this site immediately.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -50,26 +50,9 @@ export default function ThankYouPage() {
         </div>
 
         <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 text-left mb-10">
-          <h2 className="font-bold text-lg text-black mb-3">What emails to expect</h2>
-          <ul className="text-sm text-gray-600 space-y-2">
-            <li>
-              <strong>Email 1 (now):</strong> Checklist + how to use it
-            </li>
-            <li>
-              <strong>Email 2 (day 1):</strong> Fees and spreads with a clear example
-            </li>
-            <li>
-              <strong>Email 3 (day 3):</strong> Exchange accounts, wallets, recovery phrases
-            </li>
-            <li>
-              <strong>Email 4 (day 5):</strong> Tracking purchases + optional toolkit
-            </li>
-            <li>
-              <strong>Email 5 (day 7):</strong> How to compare Bitcoin tools
-            </li>
-          </ul>
-          <p className="text-xs text-gray-500 mt-4">
-            Unsubscribe anytime using the link in any email.
+          <h2 className="font-bold text-lg text-black mb-3">About the list</h2>
+          <p className="text-sm text-gray-600">
+            Your address is stored on this site&apos;s form submissions (Netlify Forms). There is no Satoshi&apos;s Path newsletter sending yet, and nothing was emailed just now. If that changes, any message will include a way to unsubscribe.
           </p>
         </div>
 

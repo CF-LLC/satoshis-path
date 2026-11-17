@@ -7,7 +7,6 @@ import EmailSignup from "@/components/EmailSignup";
 import { BuyToolkitButton } from "@/components/ToolkitCTA";
 import ToolkitPreview from "@/components/ToolkitPreview";
 import ChecklistSamples from "@/components/ChecklistSamples";
-import WelcomeSeries from "@/components/WelcomeSeries";
 
 export const metadata: Metadata = pageMeta(
   "/",
@@ -163,10 +162,12 @@ export default function Home() {
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto container-padding grid md:grid-cols-2 gap-12">
           <div>
-            <p className="text-bitcoin-orange font-semibold text-sm mb-1">What you&apos;ll get by email</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">Five short emails over a week</h2>
-            <WelcomeSeries />
-            <p className="text-xs text-gray-500 mt-5">No daily spam. Unsubscribe in any message.</p>
+            <p className="text-bitcoin-orange font-semibold text-sm mb-1">On the list</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">The checklist is ready to read now</h2>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Leave your email if you want to join the Satoshi&apos;s Path list. We are not sending a welcome series right now. The beginner checklist — fees, wallets, recovery phrases, scam warning signs, and simple record-keeping — is on this site for anyone to read, with or without an email.
+            </p>
+            <p className="text-sm"><Link href="/checklist/" className="text-bitcoin-orange font-semibold hover:underline">Open the Bitcoin starter checklist →</Link></p>
           </div>
           <div className="space-y-6">
             <div className="rounded-2xl bg-white border border-gray-200 p-6 shadow-sm">

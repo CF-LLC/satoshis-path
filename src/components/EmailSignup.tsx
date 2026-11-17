@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { ASSET_BASE, FORM_ENDPOINT, OWNER } from "@/config/site";
+import { ASSET_BASE, CHECKLIST_FORM_ACTION, CHECKLIST_FORM_NAME, OWNER } from "@/config/site";
 
 type Props = {
   source?: string;
@@ -13,8 +13,8 @@ type Props = {
 
 export default function EmailSignup({
   source = "site",
-  title = "Get the free checklist by email",
-  blurb = "The beginner checklist plus five short, practical emails. No hype. Unsubscribe anytime.",
+  title = "Get the free Bitcoin starter checklist",
+  blurb = "Leave your email to join the list. The beginner checklist is ready to read on this site now. We are not sending a welcome series right now.",
   compact = false,
   dark = false,
 }: Props) {
@@ -22,29 +22,36 @@ export default function EmailSignup({
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const id = `email-${source}`;
+  const honeyId = `company-website-${source}`;
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email.includes("@")) {
       setStatus("error");
       setMessage("Please enter a valid email address.");
       return;
     }
-    if (!FORM_ENDPOINT) {
-      setStatus("error");
-      setMessage("Email signup isn't connected yet. You can read the full checklist online right now.");
+    const honey = String(new FormData(e.currentTarget).get("bot-field") || "").trim();
+    setStatus("loading");
+    if (honey) {
+      setStatus("success");
+      setMessage("You're on the list. The checklist is ready to read on this site.");
+      window.location.href = `${ASSET_BASE}/thank-you/`;
       return;
     }
-    setStatus("loading");
     try {
-      const res = await fetch(FORM_ENDPOINT, {
+      const res = await fetch(CHECKLIST_FORM_ACTION, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, source }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": CHECKLIST_FORM_NAME,
+          email,
+          source,
+        }).toString(),
       });
       if (!res.ok) throw new Error();
       setStatus("success");
-      setMessage("You're on the list.");
+      setMessage("You're on the list. The checklist is ready to read on this site.");
       window.location.href = `${ASSET_BASE}/thank-you/`;
     } catch {
       setStatus("error");
@@ -70,9 +77,15 @@ export default function EmailSignup({
         </>
       )}
       <form onSubmit={submit} className={`flex ${compact ? "flex-row" : "flex-col sm:flex-row"} gap-2`} noValidate>
+        <input type="hidden" name="form-name" value={CHECKLIST_FORM_NAME} />
+        <p className="hidden" aria-hidden="true">
+          <label htmlFor={honeyId}>Company website</label>
+          <input id={honeyId} name="bot-field" tabIndex={-1} autoComplete="off" />
+        </p>
         <label htmlFor={id} className="sr-only">Email address</label>
         <input
           id={id}
+          name="email"
           type="email"
           autoComplete="email"
           required
@@ -87,20 +100,20 @@ export default function EmailSignup({
           disabled={status === "loading"}
           className="bg-bitcoin-orange text-black font-semibold px-5 py-3 rounded-xl hover:bg-orange-400 transition-colors disabled:opacity-60 whitespace-nowrap"
         >
-          {status === "loading" ? "Sending…" : compact ? "Send it" : "Send me the checklist"}
+          {status === "loading" ? "Saving…" : compact ? "Join the list" : "Save my email"}
         </button>
       </form>
       {message && (
         <p role="status" className={`text-sm mt-2 ${status === "success" ? "text-green-600" : dark ? "text-orange-200" : "text-red-700"}`}>
           {message}{" "}
-          {status === "error" && !FORM_ENDPOINT && (
+          {status === "error" && (
             <a href={`${ASSET_BASE}/checklist/`} className="underline font-medium">Open checklist</a>
           )}
         </p>
       )}
       {!compact && (
         <p className={`text-xs mt-3 ${dark ? "text-gray-400" : "text-gray-500"}`}>
-          From Satoshi&apos;s Path ({OWNER}). We never sell your email.
+          From Satoshi&apos;s Path ({OWNER}). We never sell your email. The checklist is on this site; we are not sending it by email right now.
         </p>
       )}
     </div>

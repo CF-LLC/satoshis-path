@@ -23,7 +23,7 @@ export default function StickyEmailBar() {
     >
       <div className="mx-2 mb-2 rounded-2xl bg-gray-950/95 backdrop-blur border border-gray-800 shadow-2xl p-3" style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
         <div className="flex items-center justify-between mb-2">
-          <p className="text-white text-sm font-semibold">Free beginner checklist <span className="text-bitcoin-orange">by email</span></p>
+          <p className="text-white text-sm font-semibold">Free beginner checklist <span className="text-bitcoin-orange">on this site</span></p>
           <button
             onClick={() => { sessionStorage.setItem("sp-bar-closed", "1"); setClosed(true); }}
             className="text-gray-400 hover:text-white text-lg leading-none px-2 py-1"

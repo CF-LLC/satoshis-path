@@ -23,7 +23,7 @@ export default function ChecklistPage() {
             href="/#checklist"
             className="border border-gray-300 text-gray-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-bitcoin-orange hover:text-bitcoin-orange transition-colors"
           >
-            Get by email
+            Join the list
           </Link>
         </div>
 

@@ -24,8 +24,14 @@ export const CONTACT_EMAIL = "satoshispath@gmail.com";
 /** Toolkit checkout: Stripe Payment Link (CF LLC). After payment Stripe redirects to sp-api.spockshop.com/success, which serves the file (Cloudflare Worker satoshis-path-delivery). */
 export const TOOLKIT_CHECKOUT_URL = process.env.NEXT_PUBLIC_TOOLKIT_CHECKOUT_URL || "https://buy.stripe.com/9B614n7wo4G5c6mbob4c80S";
 
-/** Email signup endpoint (Cloudflare Worker satoshis-path-delivery): stores the address and emails the free checklist with an unsubscribe link. */
-export const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || "https://sp-api.spockshop.com/subscribe";
+/**
+ * Checklist email capture is a Netlify Form (no send). There is no Satoshi's Path
+ * Beehiiv publication (the connected Beehiiv workspace only has "AI Money Daily").
+ * Submissions are saved in the Netlify dashboard; this site does not email the list.
+ */
+export const CHECKLIST_FORM_NAME = "bitcoin-starter-checklist";
+export const CHECKLIST_FORM_ACTION = `${ASSET_BASE || ""}/` || "/";
+
 
 /** Optional cookieless analytics (GoatCounter code, e.g. "satoshispath"). Empty = disabled. */
 export const GOATCOUNTER_CODE = process.env.NEXT_PUBLIC_GOATCOUNTER_CODE || "";

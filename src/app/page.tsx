@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { pageMeta } from "@/config/meta";
 import { OWNER } from "@/config/site";
+import { CHECKLIST_HOME_LIST_COPY } from "@/lib/checklist-email";
 import { guides } from "@/content/guides";
 import EmailSignup from "@/components/EmailSignup";
 import { BuyToolkitButton } from "@/components/ToolkitCTA";
@@ -158,14 +159,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WELCOME SERIES + WHO */}
+      {/* LIST + WHO */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto container-padding grid md:grid-cols-2 gap-12">
           <div>
             <p className="text-bitcoin-orange font-semibold text-sm mb-1">On the list</p>
             <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">The checklist is ready to read now</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Leave your email if you want to join the Satoshi&apos;s Path list. We are not sending a welcome series right now. The beginner checklist — fees, wallets, recovery phrases, scam warning signs, and simple record-keeping — is on this site for anyone to read, with or without an email.
+              {CHECKLIST_HOME_LIST_COPY}
             </p>
             <p className="text-sm"><Link href="/checklist/" className="text-bitcoin-orange font-semibold hover:underline">Open the Bitcoin starter checklist →</Link></p>
           </div>

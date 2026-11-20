@@ -49,7 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <StickyEmailBar />
 
-        {/* Hidden static form so Netlify registers the checklist signup (client fetch posts to the same form-name). No emails are sent. */}
+        {/* Hidden static form so Netlify registers the checklist signup (client fetch posts to the same form-name). Sending stays off until CHECKLIST_EMAIL_SEND_ENABLED=true. */}
         <form name={CHECKLIST_FORM_NAME} action={CHECKLIST_FORM_ACTION} method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden noValidate>
           <input type="hidden" name="form-name" value={CHECKLIST_FORM_NAME} />
           <input type="email" name="email" />

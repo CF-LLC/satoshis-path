@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from "react";
-import { ASSET_BASE, CHECKLIST_FORM_ACTION, CHECKLIST_FORM_NAME, OWNER } from "@/config/site";
+import { ASSET_BASE, CHECKLIST_FORM_ACTION, CHECKLIST_FORM_NAME } from "@/config/site";
+import { CHECKLIST_SIGNUP_BLURB, CHECKLIST_SIGNUP_FOOTNOTE, CHECKLIST_SUCCESS_MESSAGE } from "@/lib/checklist-email";
 
 type Props = {
   source?: string;
@@ -14,7 +15,7 @@ type Props = {
 export default function EmailSignup({
   source = "site",
   title = "Get the free Bitcoin starter checklist",
-  blurb = "Leave your email to join the list. The beginner checklist is ready to read on this site now. We are not sending a welcome series right now.",
+  blurb = CHECKLIST_SIGNUP_BLURB,
   compact = false,
   dark = false,
 }: Props) {
@@ -35,7 +36,7 @@ export default function EmailSignup({
     setStatus("loading");
     if (honey) {
       setStatus("success");
-      setMessage("You're on the list. The checklist is ready to read on this site.");
+      setMessage(CHECKLIST_SUCCESS_MESSAGE);
       window.location.href = `${ASSET_BASE}/thank-you/`;
       return;
     }
@@ -51,7 +52,7 @@ export default function EmailSignup({
       });
       if (!res.ok) throw new Error();
       setStatus("success");
-      setMessage("You're on the list. The checklist is ready to read on this site.");
+      setMessage(CHECKLIST_SUCCESS_MESSAGE);
       window.location.href = `${ASSET_BASE}/thank-you/`;
     } catch {
       setStatus("error");
@@ -113,7 +114,7 @@ export default function EmailSignup({
       )}
       {!compact && (
         <p className={`text-xs mt-3 ${dark ? "text-gray-400" : "text-gray-500"}`}>
-          From Satoshi&apos;s Path ({OWNER}). We never sell your email. The checklist is on this site; we are not sending it by email right now.
+          {CHECKLIST_SIGNUP_FOOTNOTE}
         </p>
       )}
     </div>

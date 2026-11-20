@@ -7,3 +7,8 @@
 [build.environment]
   NODE_VERSION = "20"
   NEXT_PUBLIC_SITE_URL = "https://satoshispath.netlify.app"
+  CHECKLIST_EMAIL_SEND_ENABLED = "false"
+
+# Form-triggered function. Sending stays off unless CHECKLIST_EMAIL_SEND_ENABLED=true.
+[functions]
+  directory = "netlify/functions"

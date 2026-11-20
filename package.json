@@ -8,7 +8,8 @@
     "start": "next start",
     "export": "next build",
     "deploy": "npm run build && touch out/.nojekyll",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test src/lib/checklist-email.test.ts"
   },
   "dependencies": {
     "react": "19.2.0",

@@ -25,9 +25,9 @@ export const CONTACT_EMAIL = "satoshispath@gmail.com";
 export const TOOLKIT_CHECKOUT_URL = process.env.NEXT_PUBLIC_TOOLKIT_CHECKOUT_URL || "https://buy.stripe.com/9B614n7wo4G5c6mbob4c80S";
 
 /**
- * Checklist email capture is a Netlify Form (no send). There is no Satoshi's Path
- * Beehiiv publication (the connected Beehiiv workspace only has "AI Money Daily").
- * Submissions are saved in the Netlify dashboard; this site does not email the list.
+ * Checklist email capture is a Netlify Form. A Resend/Netlify function can email
+ * the checklist, but live sending stays off until CHECKLIST_EMAIL_SEND_ENABLED=true
+ * (see src/lib/checklist-email.ts). Submissions are still saved in the Netlify dashboard.
  */
 export const CHECKLIST_FORM_NAME = "bitcoin-starter-checklist";
 export const CHECKLIST_FORM_ACTION = `${ASSET_BASE || ""}/` || "/";

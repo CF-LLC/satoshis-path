@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { CHECKLIST_THANKS_ABOUT, CHECKLIST_THANKS_BODY } from "@/lib/checklist-email";
 
 export const metadata: Metadata = {
   title: "Thank you | Satoshi's Path",
@@ -18,8 +19,7 @@ export default function ThankYouPage() {
           You’re in. Here’s your checklist.
         </h1>
         <p className="text-gray-600 mb-8 leading-relaxed">
-          Your email was saved to the list. We are not sending a welcome series right now.
-          You can read the beginner checklist on this site immediately.
+          {CHECKLIST_THANKS_BODY}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -52,7 +52,7 @@ export default function ThankYouPage() {
         <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 text-left mb-10">
           <h2 className="font-bold text-lg text-black mb-3">About the list</h2>
           <p className="text-sm text-gray-600">
-            Your address is stored on this site&apos;s form submissions (Netlify Forms). There is no Satoshi&apos;s Path newsletter sending yet, and nothing was emailed just now. If that changes, any message will include a way to unsubscribe.
+            {CHECKLIST_THANKS_ABOUT}
           </p>
         </div>
 

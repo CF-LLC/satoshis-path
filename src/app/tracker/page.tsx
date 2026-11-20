@@ -56,7 +56,7 @@ export default function TrackerPage() {
 
         {!TOOLKIT_CHECKOUT_URL && (
           <div className="mb-10">
-            <EmailSignup source="toolkit-waitlist" title="Get the checklist now" blurb="Leave your email to join the list. The beginner checklist is ready to read on this site. We are not sending a welcome series right now." />
+            <EmailSignup source="toolkit-waitlist" title="Get the checklist now" />
           </div>
         )}
 

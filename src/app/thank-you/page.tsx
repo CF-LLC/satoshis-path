@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMeta } from "@/config/meta";
 import { CHECKLIST_THANKS_ABOUT, CHECKLIST_THANKS_BODY } from "@/lib/checklist-email";
 
 export const metadata: Metadata = {
-  title: "Thank you | Satoshi's Path",
-  description: "Your checklist is ready. Next steps for learning Bitcoin basics.",
+  ...pageMeta("/thank-you/", "Thank you | Satoshi's Path", "Your checklist is ready. Next steps for learning Bitcoin basics."),
   robots: { index: false, follow: false },
 };
 

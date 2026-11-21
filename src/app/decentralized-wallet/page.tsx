@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Decentralized Wallets | Satoshi's Path",
-  description: "Learn about self-custody Bitcoin wallets. Compare hardware wallets, mobile wallets, and desktop solutions for securing your Bitcoin.",
-};
+export const metadata = pageMeta("/decentralized-wallet/", "Decentralized Wallets | Satoshi's Path", "Learn about self-custody Bitcoin wallets. Compare hardware wallets, mobile wallets, and desktop solutions for securing your Bitcoin.");
 
 export default function DecentralizedWalletPage() {
   type WalletExample = {

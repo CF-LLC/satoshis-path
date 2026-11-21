@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import StickyEmailBar from "@/components/StickyEmailBar";
 import Analytics from "@/components/Analytics";
 import { ASSET_BASE, CHECKLIST_FORM_ACTION, CHECKLIST_FORM_NAME, OG_IMAGE, OWNER, SITE_NAME, SITE_URL } from "@/config/site";
+import { siteJsonLd } from "@/config/jsonld";
 
 const title = "Satoshi's Path — Bitcoin basics for ordinary budgets";
 const description =
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col font-sans antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd()).replace(/</g, "\\u003c") }} />
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] bg-white px-3 py-2 rounded">Skip to content</a>
         <Navbar />
         <main id="main" className="grow">{children}</main>

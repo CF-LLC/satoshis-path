@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "About | Satoshi's Path",
-  description: "Learn about Satoshi's Path mission to help people stack Bitcoin through education, tools, and trusted referral links.",
-};
+export const metadata = pageMeta("/about/", "About | Satoshi's Path", "Learn about Satoshi's Path mission to help people stack Bitcoin through education, tools, and trusted referral links.");
 
 export default function AboutPage() {
   return (

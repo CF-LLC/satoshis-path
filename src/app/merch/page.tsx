@@ -1,14 +1,8 @@
 import Link from "next/link";
-import type { Metadata } from "next";
-import { abs } from "@/config/site";
 import { SPOCKSHOP_DROP_URL } from "@/config/affiliates";
+import { pageMeta } from "@/config/meta";
 
-export const metadata: Metadata = {
-  title: "Merch | Satoshi's Path",
-  description: "Satoshi's Path merch lives at SpockShop's Daily Drop: original illustrated tees, hoodies, mugs and hats, printed to order. Plus our bitcoin reading list.",
-  alternates: { canonical: abs("/merch/") },
-  openGraph: { title: "Merch | Satoshi's Path", url: abs("/merch/") },
-};
+export const metadata = pageMeta("/merch/", "Merch | Satoshi's Path", "Satoshi's Path merch lives at SpockShop's Daily Drop: original illustrated tees, hoodies, mugs and hats, printed to order. Plus our bitcoin reading list.");
 
 // Titles and authors only; no prices (they vary by seller and format).
 const BOOKS = [

@@ -1,9 +1,7 @@
 import PersonalStackStrategy from "@/components/PersonalStackStrategy";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "My Personal Bitcoin Stack Strategy | Satoshi's Path",
-  description: "A detailed, step-by-step guide to my proven Bitcoin accumulation strategy. Learn how to build a comprehensive approach to stacking sats.",
-};
+export const metadata = pageMeta("/personal-strategy/", "My Personal Bitcoin Stack Strategy | Satoshi's Path", "A detailed, step-by-step guide to my proven Bitcoin accumulation strategy. Learn how to build a comprehensive approach to stacking sats.");
 
 export default function PersonalStrategyPage() {
   return (

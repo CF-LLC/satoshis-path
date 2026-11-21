@@ -1,11 +1,9 @@
 import LiveNewsFeed from "@/components/LiveNewsFeed";
 import BitcoinPriceWidget from "@/components/BitcoinPriceWidget";
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Bitcoin News | Satoshi's Path",
-  description: "Latest Bitcoin news, developments, and market insights from trusted sources.",
-};
+export const metadata = pageMeta("/news/", "Bitcoin News | Satoshi's Path", "Latest Bitcoin news, developments, and market insights from trusted sources.");
 
 export default function NewsPage() {
   const newsCategories = [

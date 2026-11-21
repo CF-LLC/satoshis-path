@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import { CONTACT_EMAIL, OWNER, SITE_NAME } from '@/config/site';
 
+const MORE_FROM_CF_LLC: { href: string; label: string }[] = [
+  { href: 'https://spockshop.com', label: "Spock's Resale Shop" },
+  { href: 'https://cf-llc.github.io', label: 'CF LLC websites' },
+  { href: 'https://saasnation.site', label: 'SaaS Nation' },
+];
+
 const NAV: { href: string; label: string }[] = [
   { href: '/', label: 'Home' },
   { href: '/checklist/', label: 'Checklist' },
@@ -53,6 +59,18 @@ export default function Footer() {
           {' · '}
           <span>On-chain: <code className="break-all text-gray-700">{ONCHAIN}</code></span>
         </p>
+        <nav aria-label="More from CF LLC" className="mt-8 border-t border-gray-200 pt-6">
+          <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">More from CF LLC</p>
+          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            {MORE_FROM_CF_LLC.map((item) => (
+              <li key={item.href}>
+                <a href={item.href} className="text-gray-700 hover:text-bitcoin-orange font-medium transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <p className="mt-8 text-xs text-gray-500">
           © {year} {SITE_NAME} · Run by {OWNER}. Not financial advice. Always do your own research.
         </p>

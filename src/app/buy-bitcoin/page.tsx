@@ -1,17 +1,11 @@
 import Link from "next/link";
-import type { Metadata } from "next";
-import { abs } from "@/config/site";
 import { partnerLink, isAffiliate } from "@/config/affiliates";
 import { CHECKED_ON, EXCHANGES } from "@/data/comparisons";
 import AffiliateDisclosure from "@/components/AffiliateDisclosure";
 import Disclaimer from "@/components/Disclaimer";
+import { pageMeta } from "@/config/meta";
 
-export const metadata: Metadata = {
-  title: "Where to Buy Bitcoin: Exchanges Compared (US) | Satoshi's Path",
-  description: "An honest comparison of places to buy bitcoin in the US: bitcoin-only services vs. big exchanges, what each is good for, and links to official fee pages.",
-  alternates: { canonical: abs("/buy-bitcoin/") },
-  openGraph: { title: "Where to Buy Bitcoin: Exchanges Compared", url: abs("/buy-bitcoin/") },
-};
+export const metadata = pageMeta("/buy-bitcoin/", "Where to Buy Bitcoin: Exchanges Compared (US) | Satoshi's Path", "An honest comparison of places to buy bitcoin in the US: bitcoin-only services vs. big exchanges, what each is good for, and links to official fee pages.");
 
 const STEPS = [
   ["Pick a provider", "Bitcoin-only services keep things simple. Big exchanges list many coins and more features."],

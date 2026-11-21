@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Popular Bitcoin Videos | Satoshi's Path",
-  description: "Curated collection of the most popular and educational Bitcoin videos, documentaries, and presentations.",
-};
+export const metadata = pageMeta("/videos/", "Popular Bitcoin Videos | Satoshi's Path", "Curated collection of the most popular and educational Bitcoin videos, documentaries, and presentations.");
 
 export default function VideosPage() {
   const videoCategories = [

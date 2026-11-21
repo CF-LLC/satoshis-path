@@ -1,9 +1,7 @@
 import HODLCalculator from '@/components/HODLCalculator';
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: 'Bitcoin HODL Calculator | Satoshi\'s Path',
-  description: 'Calculate Bitcoin returns from any historical date. See how much your investment would be worth if you had HODLed Bitcoin.',
-};
+export const metadata = pageMeta("/tools/hodl-calculator/", 'Bitcoin HODL Calculator | Satoshi\'s Path', 'Calculate Bitcoin returns from any historical date. See how much your investment would be worth if you had HODLed Bitcoin.');
 
 export default function HODLCalculatorPage() {
   return (

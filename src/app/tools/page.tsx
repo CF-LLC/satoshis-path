@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
-import { abs } from "@/config/site";
 import ToolsDirectory from "@/components/ToolsDirectory";
 import HardwareWalletComparison from "@/components/HardwareWalletComparison";
+import { pageMeta } from "@/config/meta";
 
-export const metadata: Metadata = {
-  title: "Bitcoin Tools & Hardware Wallets Compared | Satoshi's Path",
-  description: "Free bitcoin calculators and trackers, plus an honest hardware wallet comparison: Trezor, Ledger, COLDCARD, BitBox02 and Jade, with official sources.",
-  alternates: { canonical: abs("/tools/") },
-  openGraph: { title: "Bitcoin Tools & Hardware Wallets Compared", url: abs("/tools/") },
-};
+export const metadata = pageMeta("/tools/", "Bitcoin Tools & Hardware Wallets Compared | Satoshi's Path", "Free bitcoin calculators and trackers, plus an honest hardware wallet comparison: Trezor, Ledger, COLDCARD, BitBox02 and Jade, with official sources.");
 
 export default function ToolsPage() {
   return (

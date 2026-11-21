@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Famous Bitcoin Endorsements | Satoshi's Path",
-  description: "Discover influential figures and institutions who support Bitcoin. From tech innovators to financial experts.",
-};
+export const metadata = pageMeta("/endorsements/", "Famous Bitcoin Endorsements | Satoshi's Path", "Discover influential figures and institutions who support Bitcoin. From tech innovators to financial experts.");
 
 export default function EndorsementsPage() {
   const categories = [

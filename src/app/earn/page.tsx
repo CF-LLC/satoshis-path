@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Earn Bitcoin | Satoshi's Path",
-  description: "Discover legitimate ways to earn your first Bitcoin through faucets, apps, games, and services. Start earning satoshis today!",
-};
+export const metadata = pageMeta("/earn/", "Earn Bitcoin | Satoshi's Path", "Discover legitimate ways to earn your first Bitcoin through faucets, apps, games, and services. Start earning satoshis today!");
 
 // Import referral data
 const referrals = require('../../../data/referrals.json');

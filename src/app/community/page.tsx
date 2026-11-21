@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Bitcoin Community | Satoshi's Path",
-  description: "Connect with fellow Bitcoiners. Find meetups, conferences, forums, and communities worldwide.",
-};
+export const metadata = pageMeta("/community/", "Bitcoin Community | Satoshi's Path", "Connect with fellow Bitcoiners. Find meetups, conferences, forums, and communities worldwide.");
 
 type Platform = {
   name: string;

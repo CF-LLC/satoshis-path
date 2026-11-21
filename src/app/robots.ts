@@ -4,5 +4,5 @@ import { abs } from "@/config/site";
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  return { rules: [{ userAgent: "*", allow: "/" }], sitemap: abs("/sitemap.xml") };
+  return { rules: [{ userAgent: "*", allow: "/", disallow: ["/thank-you/"] }], sitemap: abs("/sitemap.xml") };
 }

@@ -1,9 +1,7 @@
 import Link from "next/link";
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: "Down the Rabbit Hole | Satoshi's Path",
-  description: "Dive deep into Bitcoin knowledge with curated educational resources, books, podcasts, and essential reading for serious Bitcoiners.",
-};
+export const metadata = pageMeta("/rabbit-hole/", "Down the Rabbit Hole | Satoshi's Path", "Dive deep into Bitcoin knowledge with curated educational resources, books, podcasts, and essential reading for serious Bitcoiners.");
 
 export default function RabbitHolePage() {
   const categories = [

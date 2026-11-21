@@ -1,9 +1,7 @@
 import PriceTracker from '@/components/PriceTracker';
+import { pageMeta } from "@/config/meta";
 
-export const metadata = {
-  title: 'Bitcoin Price Tracker | Satoshi\'s Path',
-  description: 'Real-time Bitcoin price tracking with market data, 24-hour changes, market cap, volume, and historical highs and lows.',
-};
+export const metadata = pageMeta("/tools/price-tracker/", 'Bitcoin Price Tracker | Satoshi\'s Path', 'Real-time Bitcoin price tracking with market data, 24-hour changes, market cap, volume, and historical highs and lows.');
 
 export default function PriceTrackerPage() {
   return (

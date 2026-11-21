@@ -1,4 +1,5 @@
 User-Agent: *
 Allow: /
+Disallow: /thank-you/
 
 Sitemap: https://cf-llc.github.io/satoshis-path/sitemap.xml
